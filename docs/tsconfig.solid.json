@@ -1,0 +1,23 @@
+{
+	"extends": ["astro/tsconfigs/strict", "../tsconfig.base.json"],
+	"include": [".astro/types.d.ts", "**/solid/*"],
+	"exclude": ["dist"],
+	"compilerOptions": {
+        "composite": true,
+		"module": "nodenext",
+		"moduleResolution": "nodenext",
+		"jsx": "preserve",
+		"baseUrl": ".",
+        "noEmit": false,
+        "emitDeclarationOnly": true,
+		"jsxImportSource": "solid-js",
+		"paths": {
+			"@components/*": ["src/components/*"],
+			"@layouts/*": ["src/layouts/*"],
+			"@lib/*": ["src/lib/*"],
+			"@assets/*": ["src/assets/*"],
+			"@styles": ["src/styles/*"],
+			"@core/*": ["../core/*"],
+		}
+	}
+}

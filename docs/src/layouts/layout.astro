@@ -1,0 +1,23 @@
+---
+import "../styles/global.css";
+import "@m3-components/react/dist/index.css";
+---
+
+<!doctype html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap');
+            :root {
+                font-family: "Lexend Deca";
+                font-display: swap;
+            }
+        </style>
+        <title>M3 Components: The misssing UI library for Material Design 3</title>
+    </head>
+    <body class="min-h-screen flex flex-col bg-background">
+        <slot />
+    </body>
+</html>
