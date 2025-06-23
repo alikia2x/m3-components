@@ -6,9 +6,10 @@
 		"build": "astro build",
 		"preview": "astro preview",
 		"astro": "astro",
-		"format": "prettier . --write"
+		"format": "prettier . --write --plugin=prettier-plugin-astro"
 	},
 	"dependencies": {
+		"@astrojs/mdx": "^4.3.0",
 		"@astrojs/react": "^4.3.0",
 		"@astrojs/solid-js": "^5.1.0",
 		"@kobalte/core": "^0.13.10",
@@ -25,6 +26,7 @@
 	},
 	"devDependencies": {
 		"@types/react": "19.1.0",
-		"prettier": "^3.5.3"
+		"prettier": "^3.5.3",
+		"prettier-plugin-astro": "^0.14.1"
 	}
 }

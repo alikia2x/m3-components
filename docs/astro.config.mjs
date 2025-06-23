@@ -7,13 +7,15 @@ import react from "@astrojs/react";
 import solidJs from "@astrojs/solid-js";
 import tsconfigPaths from "vite-tsconfig-paths";
 
+import mdx from "@astrojs/mdx";
+
 // https://astro.build/config
 export default defineConfig({
 	vite: {
-		plugins: [tailwindcss(),tsconfigPaths()],
+		plugins: [tailwindcss(), tsconfigPaths()],
 		ssr: {
 			noExternal: ["@m3-components/react"]
 		}
 	},
-	integrations: [react({include: ['**/react/*']}), solidJs({exclude: ['**/react/*']})]
+	integrations: [react({ include: ["**/react/*"] }), solidJs({ exclude: ["**/react/*"] }), mdx()]
 });

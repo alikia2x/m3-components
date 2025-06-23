@@ -1,6 +1,6 @@
 {
     "name": "@m3-components/react",
-    "version": "0.0.1",
+    "version": "0.0.3",
     "license": "MIT",
     "files": [
         "dist/**"

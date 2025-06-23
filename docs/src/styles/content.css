@@ -1,0 +1,42 @@
+@layer components {
+	.content {
+		color: var(--md-sys-color-on-surface);
+	}
+
+	.content h1 {
+        font-size: 3.5625rem;
+		line-height: 4rem;
+	}
+
+	.content h2 {
+        font-size: 1.75rem;
+		line-height: 2.25rem;
+		margin: 1.5rem 0 1.25rem 0;
+	}
+
+	.content h3 {
+        font-size: 1.375rem;
+		line-height: 1.75rem;
+		margin: 1rem 0;
+	}
+	
+	.content li {
+		list-style: disc;
+		list-style-position: inside;
+		margin: 1rem 0;
+		font-size: 1rem;
+		line-height: 1.5rem;
+	}
+
+	.content p {
+		margin: 1rem 0;
+		font-size: 1rem;
+		line-height: 1.5rem;
+	}
+
+	.content pre {
+		margin: 1rem 0;
+		padding: 1rem 1.5rem;
+		border-radius: 1rem;
+	}
+}

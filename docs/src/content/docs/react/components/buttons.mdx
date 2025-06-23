@@ -1,0 +1,35 @@
+---
+title: Buttons
+description: Buttons prompt most actions in a UI
+---
+
+import { Button } from '@m3-components/react';
+import ComponentPreview from "@components/ComponentPreview.astro";
+
+Buttons communicate actions that people can take. They are typically placed throughout the UI, in places like:
+
+- Dialogs
+- Modal windows
+- Forms
+- Cards
+- Toolbars
+
+## Buttons
+
+### Preview
+
+<ComponentPreview>
+    <Button variant="text" className="mx-2" client:load>Text Button</Button>
+    <Button variant="filled" className="mx-2" client:load>Filled Button</Button>
+</ComponentPreview>
+
+### Code
+
+```jsx
+import { Button } from "@m3-components/react";
+```
+   
+```jsx
+<Button variant="text">Text Button</Button>
+<Button variant="filled">Filled Button</Button>
+```

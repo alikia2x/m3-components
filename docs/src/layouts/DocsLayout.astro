@@ -1,0 +1,83 @@
+---
+import "@styles/content.css";
+import { type MarkdownHeading } from "astro";
+import { type CollectionEntry } from "astro:content";
+
+interface Props {
+	entry: CollectionEntry<"reactDocs" | "solidDocs">;
+	entries: CollectionEntry<"reactDocs" | "solidDocs">[];
+	headings: MarkdownHeading[];
+	basePath: string;
+}
+
+const { entry, entries, headings, basePath }: Props = Astro.props;
+const frontMatter = entry.data;
+---
+
+<div class="fixed inset-x-0 top-0 z-10 border-b border-outline-variant">
+	<div class="bg-background/85 backdrop-blur-md">
+		<header class="flex h-14 items-center justify-between gap-8 px-4 sm:px-6 text-on-background">
+			M3 Components
+		</header>
+	</div>
+	
+</div>
+
+<div
+	class="grid min-h-dvh grid-cols-1 grid-rows-[1fr_1px_auto] pt-26.25
+     lg:grid-cols-[var(--container-2xs)_minmax(0,1fr)_2.5rem] lg:pt-14.25 xl:grid-cols-[var(--container-2xs)_minmax(0,1fr)_2.5rem]"
+>
+	<div class="relative col-start-1 row-span-full row-start-1 max-lg:hidden">
+		<div class="absolute inset-0">
+			<nav
+				class="text-on-surface sticky top-14.25 bottom-0 left-0 h-full max-h-[calc(100dvh-(var(--spacing)*14.25))]
+                 w-2xs overflow-y-auto px-2 py-6"
+			>
+				<p class="text-on-surface-variant py-3 text-xs tracking-widest ml-4">COMPONENTS</p>
+				<ul>
+					{
+						entries.map((e) => (
+							<li class={`pl-9 pr-1.5 py-1.5 relative rounded-md text-on-surface-variant
+								before:h-full before:w-0.25 before:block before:absolute duration-150
+								before:left-4 before:top-0 `
+								+ (e.id == entry.id ? 
+									"before:bg-primary/50 bg-secondary-container/30 hover:bg-secondary-container/60 hover:before:bg-primary/70 " : 
+									"before:bg-surface-container-highest hover:bg-surface-container-low hover:text-on-background")
+								}>
+								<a href={`${basePath}/${e.id}`} class="w-full h-full relative inline-block">{e.data.title}</a>
+							</li>
+						))
+					}
+				</ul>
+			</nav>
+		</div>
+	</div>
+	<div class="relative row-start-1 grid grid-cols-subgrid lg:col-start-2">
+		<div
+			class="mx-auto grid w-full max-w-2xl grid-cols-1 gap-10 xl:max-w-5xl xl:grid-cols-[minmax(0,1fr)_var(--container-2xs)]"
+		>
+			<main class="content px-4 pt-10 pb-24 sm:px-6 xl:pr-0">
+				<h1 class="mt-4">{frontMatter.title}</h1>
+				<p class="mt-2 text-on-surface-variant">{frontMatter.description}</p>
+				<slot />
+			</main>
+			<div>
+				<div class="sticky top-14 max-h-[calc(100svh-3.5rem)] overflow-x-hidden px-6 pt-10 pb-24">
+					<nav>
+						<p class="text-xs text-on-surface-variant capitalize tracking-widest py-4">CONTENTS</p>
+						<ul>
+							{
+								headings.map((entry) => (
+									<li class="text-on-surface-variant text-sm py-1.5 hover:text-on-background duration-150"
+									style={`margin-left: ${entry.depth - 2}rem`}>
+										<a href={`#${entry.slug}`}>{entry.text}</a>
+									</li>
+								))
+							}
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

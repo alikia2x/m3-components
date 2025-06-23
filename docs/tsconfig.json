@@ -12,7 +12,7 @@
 			"@layouts/*": ["src/layouts/*"],
 			"@lib/*": ["src/lib/*"],
 			"@assets/*": ["src/assets/*"],
-			"@styles": ["src/styles/*"],
+			"@styles/*": ["src/styles/*"],
 			"@core/*": ["../core/*"]
 		}
 	},
