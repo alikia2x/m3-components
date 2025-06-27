@@ -9,12 +9,16 @@
     "main": "dist/main.js",
     "types": "dist/main.d.ts",
     "scripts": {
-        "build": "tsc -b tsconfig.build.json"
+        "build": "pnpm build:tsx && pnpm build:css",
+        "build:tsx": "tsc -b tsconfig.build.json",
+        "build:css": "pnpx @tailwindcss/cli -i ./lib/styles/main.css -o ./dist/index.css"
     },
     "dependencies": {
         "solid-js": "^1.9.5"
     },
     "devDependencies": {
+        "tailwindcss": "^4.1.11",
+        "@tailwindcss/cli": "^4.1.11",
         "typescript": "~5.8.3"
     }
 }

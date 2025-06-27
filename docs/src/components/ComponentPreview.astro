@@ -1,3 +1,7 @@
-<div class="w-full h-auto py-6 my-6 flex justify-center border-2 border-outline-variant/50 rounded-3xl">
+---
+const { className } = Astro.props;
+---
+
+<div class={"w-full h-auto py-6 my-6 flex justify-center border-2 border-outline-variant/50 rounded-3xl " + (className ?? "")}>
 	<slot />
 </div>

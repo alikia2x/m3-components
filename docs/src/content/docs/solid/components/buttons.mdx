@@ -1,0 +1,50 @@
+---
+title: Buttons
+description: Buttons prompt most actions in a UI
+---
+
+import { Button } from '@m3-components/solid';
+import ComponentPreview from "@components/ComponentPreview.astro";
+
+Buttons communicate actions that people can take. They are typically placed throughout the UI, in places like:
+
+- Dialogs
+- Modal windows
+- Forms
+- Cards
+- Toolbars
+
+## Import
+
+```jsx
+import "@m3-components/solid/dist/index.css";
+import { Button } from "@m3-components/solid";
+```
+
+## Basic Buttons
+
+<ComponentPreview className="gap-4">
+    <Button variant="text" client:load>Text Button</Button>
+    <Button variant="filled" client:load>Filled Button</Button>
+</ComponentPreview>
+
+   
+```jsx
+<Button variant="text">Text Button</Button>
+<Button variant="filled">Filled Button</Button>
+```
+
+## Sizes
+
+<ComponentPreview className="items-center gap-4">
+    <Button size="s" client:load>Small</Button>
+    <Button size="m" client:load>Medium</Button>
+    <Button size="l" client:load>Large</Button>
+</ComponentPreview>
+
+```jsx
+<Button size="s">Small</Button>
+<Button size="m">Medium</Button>
+<Button size="l">Large</Button>
+```
+
