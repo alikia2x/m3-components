@@ -1,34 +1,48 @@
 ---
 import "@styles/content.css";
-import { versionsMap } from "@lib/versions";
+import SideBar from "./SideBar.svelte";
 import { type MarkdownHeading } from "astro";
 import { type CollectionEntry } from "astro:content";
+import GitHub from "@components/icons/GitHub.svelte";
 
 interface Props {
-	entry: CollectionEntry<"reactDocs" | "solidDocs">;
-	entries: CollectionEntry<"reactDocs" | "solidDocs">[];
+	entry: CollectionEntry<"reactDocs" | "solidDocs" | "commonDocs">;
+	entries: CollectionEntry<"reactDocs" | "solidDocs" | "commonDocs">[];
 	headings: MarkdownHeading[];
-	basePath: "/docs/react" | "/docs/solid";
+	basePath: "/docs/react" | "/docs/solid" | "/docs";
 }
 
 const { entry, entries, headings, basePath }: Props = Astro.props;
 const frontMatter = entry.data;
-const library = versionsMap[basePath].lib;
-const version = versionsMap[basePath].version;
+
+const groupedEntries = entries.reduce(
+	(acc, e) => {
+		const splittedID = e.id.split("/");
+		const haveCategory = splittedID.length > 1;
+		const category = haveCategory ? splittedID[0] : "";
+		if (acc[category]) {
+			acc[category].push(e);
+		} else {
+			acc[category] = [e];
+		}
+		return acc;
+	},
+	{} as Record<string, CollectionEntry<"reactDocs" | "solidDocs" | "commonDocs">[]>
+);
 ---
 
 <div class="fixed inset-x-0 top-0 z-10 border-b border-outline-variant h-16">
 	<div class="bg-background/85 backdrop-blur-md">
 		<header class="flex h-16 items-center justify-between gap-8 px-4 sm:px-6 text-on-background">
-			<div class="flex gap-10 lg:w-72 pl-4">
-				M3 Components
-			</div>
-			<input placeholder="Search" class="bg-surface-container-high rounded-full h-12 py-2 px-6 lg:w-md xl:w-lg focus:outline-none" />
+			<a class="flex gap-10 lg:w-72 pl-4" href="/">M3 Components</a>
+			<input
+				placeholder="Search"
+				class="bg-surface-container-high rounded-full h-12 py-2 px-6 lg:w-md xl:w-lg focus:outline-none"
+			/>
 			<div class="flex lg:w-72 justify-end pr-4">
-				<div class="flex gap-2">
-					<span>{library}</span>
-					<span class="text-on-surface-variant/80">v{version}</span>
-				</div>
+				<a href="https://github.com/alikia2x/m3-components" class="text-2xl">
+					<GitHub />
+				</a>
 			</div>
 		</header>
 	</div>
@@ -36,35 +50,15 @@ const version = versionsMap[basePath].version;
 
 <div
 	class="grid min-h-dvh grid-cols-1 grid-rows-[1fr_1px_auto] pt-26.25
-     lg:grid-cols-[var(--container-2xs)_minmax(0,1fr)_2.5rem] lg:pt-16 xl:grid-cols-[var(--container-2xs)_minmax(0,1fr)_2.5rem]"
+     lg:grid-cols-[var(--container-xs)_minmax(0,1fr)_2.5rem] lg:pt-16 xl:grid-cols-[var(--container-xs)_minmax(0,1fr)_2.5rem]"
 >
 	<div class="relative col-start-1 row-span-full row-start-1 max-lg:hidden">
 		<div class="absolute inset-0">
 			<nav
 				class="text-on-surface sticky top-16 bottom-0 left-0 h-full max-h-[calc(100dvh-(var(--spacing)*16))]
-                 w-2xs overflow-y-auto px-2 py-6"
+                 w-full overflow-y-auto pl-4 py-6"
 			>
-				<p class="text-on-surface-variant py-3 text-xs tracking-widest ml-4">COMPONENTS</p>
-				<ul>
-					{
-						entries.map((e) => (
-							<li
-								class={
-									`pl-9 pr-1.5 py-1.5 relative rounded-md text-on-surface-variant
-								before:h-full before:w-0.25 before:block before:absolute duration-150
-								before:left-4 before:top-0 ` +
-									(e.id == entry.id
-										? "before:bg-primary/50 bg-secondary-container/30 hover:bg-secondary-container/60 hover:before:bg-primary/70 "
-										: "before:bg-surface-container-highest hover:bg-surface-container-low hover:text-on-background")
-								}
-							>
-								<a href={`${basePath}/${e.id}`} class="w-full h-full relative inline-block">
-									{e.data.title}
-								</a>
-							</li>
-						))
-					}
-				</ul>
+				<SideBar entries={groupedEntries} entry={entry} basePath={basePath} />
 			</nav>
 		</div>
 	</div>

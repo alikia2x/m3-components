@@ -39,4 +39,8 @@
 		padding: 1rem 1.5rem;
 		border-radius: 1rem;
 	}
+
+	.content a {
+		color: var(--md-sys-color-primary);
+	}
 }

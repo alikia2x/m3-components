@@ -8,6 +8,10 @@ interface ButtonProps extends JSX.ButtonHTMLAttributes<HTMLButtonElement> {
     ripple?: boolean;
 }
 
+const getShapeClasses = (shape: "round" | "square") => {
+    return shape === "round" ? "rounded-full" : "rounded-2xl";
+};
+
 const FilledButton: Component<ButtonProps> = ({
     children,
     size = "s",

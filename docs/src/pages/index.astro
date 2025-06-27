@@ -1,5 +1,7 @@
 ---
 import Layout from "@layouts/Layout.astro";
+import { Button } from '@m3-components/solid';
+import "@m3-components/solid/dist/index.css";
 ---
 
 <Layout>
@@ -22,6 +24,9 @@ import Layout from "@layouts/Layout.astro";
 					<a class="text-nowrap text-primary" href="https://m3.material.io">Material Design 3</a>, Google's
 					robust and adaptable design system.
 				</p>
+				<a href="/docs/getting-started">
+					<Button client:load> Getting Started </Button>
+				</a>
 			</div>
 			<div class="hidden md:w-1/2 items-center justify-center md:flex text-primary text-3xl border-2 h-full">
 				Demo

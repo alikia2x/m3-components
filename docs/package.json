@@ -12,6 +12,7 @@
 		"@astrojs/mdx": "^4.3.0",
 		"@astrojs/react": "^4.3.0",
 		"@astrojs/solid-js": "^5.1.0",
+		"@astrojs/svelte": "^7.1.0",
 		"@kobalte/core": "^0.13.10",
 		"@m3-components/react": "workspace:*",
 		"@m3-components/solid": "workspace:*",
@@ -21,7 +22,9 @@
 		"react": "^19.1.0",
 		"react-dom": "^19.1.0",
 		"solid-js": "^1.9.7",
+		"svelte": "^5.34.8",
 		"tailwindcss": "^4.1.10",
+		"typescript": "^5.8.3",
 		"vite-tsconfig-paths": "^5.1.4"
 	},
 	"devDependencies": {

@@ -6,5 +6,9 @@ export const versionsMap = {
     "/docs/solid": {
         "lib": "Solid",
         "version": "0.0.3"
+    },
+    "/docs": {
+        "lib": "Overview",
+        "version": null
     }
 }

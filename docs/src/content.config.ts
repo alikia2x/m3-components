@@ -14,7 +14,17 @@ const solidDocs = defineCollection({
 		description: z.string()
 	})
 });
+
+const commonDocs = defineCollection({
+	loader: glob({ pattern: ["*.mdx", "**/*.mdx"], base: "./src/content/docs/common" }),
+	schema: z.object({
+		title: z.string(),
+		description: z.string(),
+		redirect: z.string().optional()
+	})
+});
 export const collections = {
 	reactDocs,
-	solidDocs
+	solidDocs,
+	commonDocs
 };
