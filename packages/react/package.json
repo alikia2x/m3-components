@@ -1,6 +1,7 @@
 {
     "name": "@m3-components/react",
     "version": "0.0.3",
+    "private": false,
     "license": "MIT",
     "files": [
         "dist/**"
@@ -17,14 +18,14 @@
         "@rollup/plugin-typescript": "^11.1.6",
         "@tailwindcss/postcss": "^4.1.10",
         "@types/node": "^22.10.1",
-        "@types/react": "catalog:",
-        "@types/react-dom": "catalog:",
+        "@types/react": "^19.0.0",
+        "@types/react-dom": "^19.0.0",
         "@typescript-eslint/eslint-plugin": "^8.12.2",
         "@typescript-eslint/parser": "^8.12.2",
         "autoprefixer": "^10.4.21",
         "postcss": "^8.5.6",
-        "react": "catalog:",
-        "react-dom": "catalog:",
+        "react": "^19.0.0",
+        "react-dom": "^19.0.0",
         "rollup": "^3.29.4",
         "rollup-plugin-copy": "^3.5.0",
         "rollup-plugin-peer-deps-external": "^2.2.4",
@@ -37,8 +38,8 @@
         "typescript": "^5.4.5"
     },
     "overrides": {
-        "@types/react": "catalog:",
-        "@types/react-dom": "catalog:"
+        "@types/react": "^19.0.0",
+        "@types/react-dom": "^19.0.0"
     },
     "dependencies": {
         "rollup-plugin-dts": "^6.2.1"

@@ -1,6 +1,7 @@
 {
     "name": "@m3-components/solid",
-    "version": "0.0.1",
+    "version": "0.0.3",
+    "private": false,
     "license": "MIT",
     "type": "module",
     "files": [
