@@ -5,7 +5,7 @@ description: Steps to integrate M3 Components into your Solid.js app
 
 ## Installation
 
-Run one of the following commands to add M3 Components to your project:
+To add M3 Components to your project, run one of the following commands, depending on your package manager:
 
 ```bash
 npm i @m3-components/solid
@@ -14,3 +14,21 @@ pnpm i @m3-components/solid
 bun i @m3-components/solid
 deno add npm:@m3-components/solid
 ```
+
+## Styling
+
+M3 Components uses [Tailwind CSS](https://tailwindcss.com/) for styling. To ensure styles work correctly, first [install Tailwind CSS](https://tailwindcss.com/docs/installation/framework-guides/solidjs) in your project.
+
+After installation, import the M3 Components stylesheet:
+
+```javascript
+import "@m3-components/solid/dist/index.css";
+```
+
+## API Design
+
+Each component in this library inherits the properties of its root HTML tag, as defined in `solid-js.JSX`. This allows you to use standard HTML attributes as props with M3 Components, such as `class` or `id`.
+
+To avoid conflicts with native HTML attributes, some component-specific props have been renamed (e.g., `variant` instead of `type`).
+
+**Note:** Since we use Tailwind CSS for styling, any `class` you specify will be applied **after** the component's pre-defined class names.

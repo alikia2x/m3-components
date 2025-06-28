@@ -43,4 +43,15 @@
 	.content a {
 		color: var(--md-sys-color-primary);
 	}
+	
+	.content code {
+		font-family: "IBM Plex Mono", monospace;
+	}
+
+	.content code:not(pre > code) {
+		background-color: var(--md-sys-color-surface-container-high);
+		padding: 0.125rem 0.5rem;
+		border-radius: 0.25rem;
+		margin: 0rem 0.125rem;
+	}
 }

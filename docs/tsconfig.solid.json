@@ -1,6 +1,6 @@
 {
 	"extends": ["astro/tsconfigs/strict", "../tsconfig.base.json"],
-	"include": [".astro/types.d.ts", "**/solid/*.tsx"],
+	"include": [".astro/types.d.ts", "**/solid/*.tsx", "**/*.solid.tsx"],
 	"exclude": ["dist"],
 	"compilerOptions": {
 		"composite": true,

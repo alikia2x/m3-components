@@ -20,7 +20,7 @@
     {#if category}
         <p class="text-on-surface-variant py-3 text-xs tracking-widest ml-4 uppercase">{category}</p>
     {/if}
-    {#each entries[category] as e}
+    {#each entries[category].sort((a, b) => a.data.title.localeCompare(b.data.title)) as e}
         <ul>
             <li
                 class={

@@ -1,25 +1,38 @@
 {
     "name": "@m3-components/solid",
-    "version": "0.0.3",
+    "version": "0.0.5",
     "private": false,
     "license": "MIT",
     "type": "module",
     "files": [
-        "dist/**"
+        "dist"
     ],
     "main": "dist/main.js",
     "types": "dist/main.d.ts",
     "scripts": {
         "build": "pnpm build:tsx && pnpm build:css",
-        "build:tsx": "tsc -b tsconfig.build.json",
+        "build:tsx": "tsup --config ./tsup.config.ts --minify",
         "build:css": "pnpx @tailwindcss/cli -i ./lib/styles/main.css -o ./dist/index.css"
+    },
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "solid": "./dist/index.jsx",
+            "default": "./dist/index.js"
+        },
+        "./index.css": "./dist/index.css"
+    },
+    "peerDependencies": {
+        "solid-js": "^1.9.4"
     },
     "dependencies": {
         "solid-js": "^1.9.5"
     },
     "devDependencies": {
-        "tailwindcss": "^4.1.11",
         "@tailwindcss/cli": "^4.1.11",
-        "typescript": "~5.8.3"
+        "esbuild-plugin-solid": "^0.6.0",
+        "tailwindcss": "^4.1.11",
+        "typescript": "~5.8.3",
+        "tsup": "^8.3.6"
     }
 }

@@ -1,5 +1,3 @@
-import { createSignal, createEffect, onCleanup } from "solid-js";
-
 interface UseRippleOptions {
     ripple?: boolean;
 }
@@ -44,11 +42,6 @@ export const useRipple = (options: UseRippleOptions = {}) => {
     };
 
     const handleMouseDown = (event: MouseEvent) => {
-        if (!ripple) return;
-        createRippleEffect(event);
-    };
-
-    const handleTouchStart = (event: TouchEvent) => {
         if (!ripple) return;
         createRippleEffect(event);
     };
