@@ -6,7 +6,8 @@
 		"build": "astro build",
 		"preview": "astro preview",
 		"astro": "astro",
-		"format": "prettier . --write --plugin=prettier-plugin-astro"
+		"format": "prettier . --write --plugin=prettier-plugin-astro",
+		"deploy": "pnpm wrangler deploy"
 	},
 	"dependencies": {
 		"@astrojs/mdx": "^4.3.0",
@@ -30,6 +31,7 @@
 	"devDependencies": {
 		"@types/react": "19.1.0",
 		"prettier": "^3.5.3",
-		"prettier-plugin-astro": "^0.14.1"
+		"prettier-plugin-astro": "^0.14.1",
+		"wrangler": "^4.22.0"
 	}
 }
