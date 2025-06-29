@@ -3,9 +3,60 @@ title: App Bars
 description: App bars are placed at the top of the screen to help people navigate through a product
 ---
 
-import { AppBarDemo } from '@components/appbar.solid';
+import { AppBarDemo } from '@components/AppBar.solid';
 import ComponentPreview from "@components/ComponentPreview.astro";
+
+## Search App Bar
 
 <ComponentPreview className="!p-0 overflow-clip">
     <AppBarDemo client:load/>
 </ComponentPreview>
+
+```jsx
+import { createScrollPosition } from "@solid-primitives/scroll";
+import { MenuIcon, UserIcon, LoremIpsum } from "your-components";
+import {
+	AppBar,
+	AppBarSearchBox,
+	IconButton,
+	LeadingElement,
+	TrailingElementGroup,
+	TrailingElement
+} from "@m3-components/solid";
+
+const App = () => {
+    let container;
+    const [scrolling, setScrolling] = createSignal(false);
+    const scroll = createScrollPosition(() => container);
+
+	createEffect(() => {
+		const currentPos = scroll.y;
+		if (currentPos > 10) {
+			setScrolling(true);
+		} else {
+			setScrolling(false);
+		}
+	});
+
+    return (
+        <div ref={container}>
+            <AppBar variant="search" scrolling={scrolling}>
+                <LeadingElement>
+                    <IconButton>
+                        <MenuIcon />
+                    </IconButton>
+                </LeadingElement>
+                <AppBarSearchBox placeholder="Search" scrolling={scrolling} />
+                <TrailingElementGroup>
+                    <TrailingElement>
+                        <IconButton>
+                            <UserIcon />
+                        </IconButton>
+                    </TrailingElement>
+                </TrailingElementGroup>
+            </AppBar>
+            <LoremIpsum/>
+        </div>
+    )
+}
+```

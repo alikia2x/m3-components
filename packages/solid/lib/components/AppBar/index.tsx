@@ -1,4 +1,4 @@
-import { Component, JSX } from "solid-js";
+import { Accessor, Component, JSX } from "solid-js";
 import { SearchAppBar } from "./Search";
 import { tv } from "tailwind-variants";
 import { getClass } from "@utils/getClass";
@@ -8,7 +8,7 @@ type AppBarTypesOriginalM3 = "small" | "center-aligned" | "medium" | "large";
 type DivProps = JSX.HTMLAttributes<HTMLDivElement>;
 
 interface AppBarCommonProps extends JSX.ButtonHTMLAttributes<HTMLElement> {
-    scrolling: boolean;
+    scrolling?: Accessor<boolean>;
 }
 
 export interface AppBarConfigExpressive extends AppBarCommonProps {

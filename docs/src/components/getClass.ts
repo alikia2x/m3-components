@@ -1,6 +1,6 @@
 function removeAttr<T extends object, K extends keyof T>(obj: T, attr: K): Omit<T, K> {
-    const { [attr]: _, ...rest } = obj;
-    return rest as Omit<T, K>;
+	const { [attr]: _, ...rest } = obj;
+	return rest as Omit<T, K>;
 }
 
 /**
@@ -13,12 +13,10 @@ function removeAttr<T extends object, K extends keyof T>(obj: T, attr: K): Omit<
  * @returns A tuple where the first element is the 'className' (or undefined if not present)
  * and the second element is the rest of the props without 'className'.
  */
-export function getClass<P extends {class?: string | undefined}>(
-    props: P
-): [string | undefined, Omit<P, 'class'>] {
-    const className = props.class as string || "";
+export function getClass<P extends { class?: string | undefined }>(props: P): [string | undefined, Omit<P, "class">] {
+	const className = (props.class as string) || "";
 
-    const restWithoutClass = removeAttr(props, 'class' as keyof P);
+	const restWithoutClass = removeAttr(props, "class" as keyof P);
 
-    return [className, restWithoutClass as Omit<P, 'class'>];
+	return [className, restWithoutClass as Omit<P, "class">];
 }

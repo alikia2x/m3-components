@@ -7,3 +7,4 @@ export {
     TrailingElement,
     type AppBarProps,
 } from "./components/AppBar/index";
+export { getClass } from "@utils/getClass";
