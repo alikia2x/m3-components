@@ -7,7 +7,7 @@ type AppBarTypesExpressive = "search" | "small" | "medium-flexible" | "large-fle
 type AppBarTypesOriginalM3 = "small" | "center-aligned" | "medium" | "large";
 type DivProps = JSX.HTMLAttributes<HTMLDivElement>;
 
-interface AppBarCommonProps extends JSX.ButtonHTMLAttributes<HTMLElement> {
+interface AppBarCommonProps extends JSX.HTMLAttributes<HTMLElement> {
     scrolling?: Accessor<boolean>;
 }
 

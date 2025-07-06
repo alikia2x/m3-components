@@ -48,10 +48,26 @@
 		font-family: "IBM Plex Mono", monospace;
 	}
 
+	.content pre {
+		scrollbar-width: none;
+	}
+
+	.content pre::-webkit-scrollbar {
+		display: none;
+	}
+
 	.content code:not(pre > code) {
 		background-color: var(--md-sys-color-surface-container-high);
 		padding: 0.125rem 0.5rem;
 		border-radius: 0.25rem;
-		margin: 0rem 0.125rem;
+		margin: 0 0.125rem;
+	}
+
+	.content blockquote {
+		margin: 1rem 0;
+		padding: 0.5rem 1.5rem;
+		color: var(--md-sys-color-on-surface-variant);
+		background-color: var(--md-sys-color-surface-container-low);
+		border-radius: 1rem;
 	}
 }

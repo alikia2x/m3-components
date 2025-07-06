@@ -8,6 +8,9 @@ importers:
 
   .:
     devDependencies:
+      prettier:
+        specifier: ^3.5.3
+        version: 3.5.3
       turbo:
         specifier: ^2.5.4
         version: 2.5.4
@@ -175,6 +178,9 @@ importers:
       solid-js:
         specifier: ^1.9.5
         version: 1.9.7
+      tailwind-variants:
+        specifier: ^1.0.0
+        version: 1.0.0(tailwindcss@4.1.11)
     devDependencies:
       '@tailwindcss/cli':
         specifier: ^4.1.11
@@ -8655,6 +8661,11 @@ snapshots:
     dependencies:
       tailwind-merge: 3.0.2
       tailwindcss: 4.1.10
+
+  tailwind-variants@1.0.0(tailwindcss@4.1.11):
+    dependencies:
+      tailwind-merge: 3.0.2
+      tailwindcss: 4.1.11
 
   tailwindcss@4.1.10: {}
 

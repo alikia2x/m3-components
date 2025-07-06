@@ -8,13 +8,7 @@ export interface IconButtonProps extends JSX.ButtonHTMLAttributes<HTMLButtonElem
     ripple?: boolean;
 }
 
-export const IconButton: Component<IconButtonProps> = ({
-    children,
-    disabled,
-    ref,
-    ripple = true,
-    ...rest
-}) => {
+export const IconButton: Component<IconButtonProps> = ({ children, disabled, ref, ripple = true, ...rest }) => {
     const { onMouseDown } = useRipple({ ripple: ripple ?? true });
     const [className, restWithoutClass] = getClass(rest);
 
@@ -36,11 +30,10 @@ export const IconButton: Component<IconButtonProps> = ({
         <button
             class={buttonStyles({ className })}
             {...restWithoutClass}
-            onMouseDown={onMouseDown}
             disabled={disabled}
             ref={ref as unknown as (el: HTMLButtonElement) => void}
         >
-            <div class={stateLayerStyles({ disabled: disabled })}></div>
+            <div class={stateLayerStyles({ disabled: disabled })} onMouseDown={onMouseDown}></div>
             {children}
         </button>
     );

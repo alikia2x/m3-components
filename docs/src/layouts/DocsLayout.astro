@@ -3,7 +3,7 @@ import "@styles/content.css";
 import SideBar from "./SideBar.svelte";
 import { type MarkdownHeading } from "astro";
 import { type CollectionEntry } from "astro:content";
-import GitHub from "@components/icons/GitHub.svelte";
+import { TopAppBar } from "./AppBar.solid.tsx";
 
 interface Props {
 	entry: CollectionEntry<"reactDocs" | "solidDocs" | "commonDocs">;
@@ -17,9 +17,9 @@ const frontMatter = entry.data;
 
 const groupedEntries = entries.reduce(
 	(acc, e) => {
-		const splittedID = e.id.split("/");
-		const haveCategory = splittedID.length > 1;
-		const category = haveCategory ? splittedID[0] : "";
+		const splitID = e.id.split("/");
+		const haveCategory = splitID.length > 1;
+		const category = haveCategory ? splitID[0] : "";
 		if (acc[category]) {
 			acc[category].push(e);
 		} else {
@@ -31,22 +31,7 @@ const groupedEntries = entries.reduce(
 );
 ---
 
-<div class="fixed inset-x-0 top-0 z-10 border-b border-outline-variant h-16">
-	<div class="bg-background/85 backdrop-blur-md">
-		<header class="flex h-16 items-center justify-between gap-8 px-4 sm:px-6 text-on-background">
-			<a class="flex gap-10 lg:w-72 pl-4" href="/">M3 Components</a>
-			<input
-				placeholder="Search"
-				class="bg-surface-container-high rounded-full h-12 py-2 px-6 lg:w-md xl:w-lg focus:outline-none"
-			/>
-			<div class="flex lg:w-72 justify-end pr-4">
-				<a href="https://github.com/alikia2x/m3-components" class="text-2xl">
-					<GitHub />
-				</a>
-			</div>
-		</header>
-	</div>
-</div>
+<TopAppBar client:load />
 
 <div
 	class="grid min-h-dvh grid-cols-1 grid-rows-[1fr_1px_auto] pt-26.25

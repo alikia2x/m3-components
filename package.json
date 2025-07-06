@@ -1,13 +1,14 @@
 {
-    "name": "m3-components",
-    "private": true,
-    "scripts": {
-        "build": "turbo run build",
-        "dev": "turbo run dev"
-    },
-    "packageManager": "pnpm@10.11.1",
-    "devDependencies": {
-        "turbo": "^2.5.4",
-        "typescript": "^5.8.3"
-    }
+	"name": "m3-components",
+	"private": true,
+	"scripts": {
+		"build": "turbo run build",
+		"dev": "turbo run dev"
+	},
+	"packageManager": "pnpm@10.11.1",
+	"devDependencies": {
+		"prettier": "^3.5.3",
+		"turbo": "^2.5.4",
+		"typescript": "^5.8.3"
+	}
 }

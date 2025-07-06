@@ -17,17 +17,26 @@ deno add npm:@m3-components/solid
 
 ## Styling
 
-M3 Components uses [Tailwind CSS](https://tailwindcss.com/) for styling. You don't need to install Tailwind for the styles to show properly.
+M3 Components uses [Tailwind CSS](https://tailwindcss.com/) for styling.
+You don't need to install Tailwind for the styles to show properly.
 After installation, simply import the stylesheet:
 
 ```javascript
 import "@m3-components/solid/index.css";
 ```
 
+You can also import it from your global CSS file:
+
+```css
+@import "@m3-components/solid/index.css";
+```
+
 ## API Design
 
-Each component in this library inherits the properties of its root HTML tag, as defined in `solid-js.JSX`. This allows you to use standard HTML attributes as props with M3 Components, such as `class` or `id`.
+Each component in this library inherits the properties of its root HTML tag, as defined in `solid-js.JSX`.
+This allows you to use standard HTML attributes as props with M3 Components, such as `class` or `id`.
 
 To avoid conflicts with native HTML attributes, some component-specific props have been renamed (e.g., `variant` instead of `type`).
 
-**Note:** Since we use Tailwind CSS for styling, any `class` you specify will be applied **after** the component's pre-defined class names.
+> **Note:** Since we use Tailwind CSS for styling,
+> any `class` you specify will be applied **after** the component's pre-defined class names.

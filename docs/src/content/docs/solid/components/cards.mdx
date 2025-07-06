@@ -1,0 +1,88 @@
+---
+title: Cards
+description: Cards display content and actions about a single subject
+---
+
+import { Card, Typography, CardMedia, CardContent, CardActionArea } from '@m3-components/solid';
+import ComponentPreview from "@components/ComponentPreview.astro";
+import { Image } from 'astro:assets';
+import Mountain from "@assets/Mount_Everest_Unsplash.webp";
+
+Use a card to display content and actions on a single topic.
+
+Cards should be easy to scan for relevant and actionable information. 
+Elements like text and images, should be placed on cards in a way that clearly indicates hierarchy.
+
+## Import
+
+```jsx
+import {
+    Card,
+    CardMedia,
+    CardContent,
+    CardActionArea
+} from '@m3-components/solid';
+```
+
+## With Image
+
+<ComponentPreview>
+    <Card variant="outlined" class="w-120">
+        <CardMedia src={Mountain.src} class="h-50" alt="An image of Mount Everest"  />
+        <CardContent>
+            <Typography.Headline variant="small">Mount Everest</Typography.Headline>
+            <Typography.Body>
+                Mount Everest is the tallest mountain in the world, at 8,849 meters (29,032 feet).
+                It sits on the border between Nepal and Tibet, part of the Himalayas.
+            </Typography.Body>
+        </CardContent>
+    </Card>
+</ComponentPreview>
+
+   
+```jsx
+<Card variant="outlined" class="w-120">
+    <CardMedia src={Mountain.src} class="h-50" alt="An image of Mount Everest"  />
+    <CardContent>
+        <Typography.Headline variant="small">Mount Everest</Typography.Headline>
+        <Typography.Body>
+            Mount Everest is the tallest mountain in the world, at 8,849 meters (29,032 feet).
+            It sits on the border between Nepal and Tibet, part of the Himalayas.
+        </Typography.Body>
+    </CardContent>
+</Card>
+```
+
+## Action
+
+You can wrap the content within the card with `CardActionArea` component to allow users to interact with the card.
+
+<ComponentPreview>
+    <Card variant="outlined" class="w-120">
+        <CardActionArea client:load>
+            <CardMedia src={Mountain.src} class="h-50" alt="An image of Mount Everest"  />
+            <CardContent>
+                <Typography.Headline variant="small">Mount Everest</Typography.Headline>
+                <Typography.Body>
+                    Mount Everest is the tallest mountain in the world, at 8,849 meters (29,032 feet).
+                    It sits on the border between Nepal and Tibet, part of the Himalayas.
+                </Typography.Body>
+            </CardContent>
+        </CardActionArea>
+    </Card>
+</ComponentPreview>
+
+```jsx
+<Card variant="outlined" class="w-120">
+    <CardActionArea>
+        <CardMedia src={Mountain.src} class="h-50" alt="An image of Mount Everest"  />
+        <CardContent>
+            <Typography.Headline variant="small">Mount Everest</Typography.Headline>
+            <Typography.Body>
+                Mount Everest is the tallest mountain in the world, at 8,849 meters (29,032 feet).
+                It sits on the border between Nepal and Tibet, part of the Himalayas.
+            </Typography.Body>
+        </CardContent>
+    </CardActionArea>
+</Card>
+```
