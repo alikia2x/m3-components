@@ -34,7 +34,7 @@ export const TopAppBar: Component<JSX.HTMLAttributes<HTMLElement>> = (props) => 
 	return (
 		<AppBar variant="search" scrolling={scrolling} class="fixed inset-x-0 top-0 z-20 px-2">
 			<LeadingElement>
-				<div class="rounded-full w-12 h-12 flex items-center justify-center bg-blue-200/50">
+				<div class="rounded-full w-12 h-12 flex items-center justify-center bg-blue-200/50 dark:bg-blue-300">
 					<span class="text-xl font-medium translate-x-[1.5px] text-blue-900">
 						M<sup class="text-sm">3</sup>
 					</span>
@@ -43,8 +43,8 @@ export const TopAppBar: Component<JSX.HTMLAttributes<HTMLElement>> = (props) => 
 			<AppBarSearchBox placeholder="Search" scrolling={scrolling} />
 			<TrailingElementGroup>
 				<TrailingElement>
-					<IconButton>
-						<GitHub />
+					<IconButton class="font-2xl w-12 h-12 text-on-background">
+						<GitHub  />
 					</IconButton>
 				</TrailingElement>
 			</TrailingElementGroup>

@@ -1,4 +1,11 @@
-export { Button, IconButton, type ButtonProps } from "./components/Button/index";
+export {
+	Button,
+	IconButton,
+	FloatingActionButton,
+	type ButtonProps,
+	type FloatingActionButtonProps,
+	type IconButtonProps
+} from "./components/Button";
 export {
 	AppBar,
 	AppBarSearchBox,
@@ -10,4 +17,4 @@ export {
 export { getClass } from "@utils/getClass";
 export { Card, type CardProps, CardContent, CardMedia, CardActionArea } from "./components/Cards/index";
 export { Typography } from "./components/Typography/index";
-export { NavigationRail } from "./components/NavigationRail/index";
+export { NavigationRail, NavigationRailAction } from "./components/NavigationRail/index";

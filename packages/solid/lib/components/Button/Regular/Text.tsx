@@ -5,7 +5,7 @@ import { getClass } from "@utils/getClass";
 
 export const TextButton: Component<ButtonProps> = ({
     children,
-    size = "s",
+    size = "small",
     shape = "round",
     disabled,
     ref,

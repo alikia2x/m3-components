@@ -3,26 +3,15 @@ import { SearchAppBar } from "./Search";
 import { tv } from "tailwind-variants";
 import { getClass } from "@utils/getClass";
 
-type AppBarTypesExpressive = "search" | "small" | "medium-flexible" | "large-flexible";
-type AppBarTypesOriginalM3 = "small" | "center-aligned" | "medium" | "large";
 type DivProps = JSX.HTMLAttributes<HTMLDivElement>;
 
-interface AppBarCommonProps extends JSX.HTMLAttributes<HTMLElement> {
-    scrolling?: Accessor<boolean>;
-}
-
-export interface AppBarConfigExpressive extends AppBarCommonProps {
-    expressive?: true;
-    variant?: AppBarTypesExpressive;
+export interface AppBarProps extends JSX.HTMLAttributes<HTMLElement> {
+	scrolling?: Accessor<boolean>;
+	expressive?: true;
+    variant?: "search" | "small" | "medium-flexible" | "large-flexible";
     alignment?: "leading-edge" | "center";
 }
 
-export interface AppBarConfigOriginalM3 extends AppBarCommonProps {
-    expressive?: false;
-    variant?: AppBarTypesOriginalM3;
-}
-
-export type AppBarProps = AppBarConfigExpressive | AppBarConfigOriginalM3;
 
 export const LeadingElement: Component<DivProps> = ({ children, ...rest }) => {
     const [className, restWithoutClass] = getClass(rest);

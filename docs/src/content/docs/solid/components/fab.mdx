@@ -1,0 +1,35 @@
+---
+title: FAB
+description: Floating action buttons (FABs) help people take primary actions
+---
+
+import { FloatingActionButton } from '@m3-components/solid';
+import ComponentPreview from "@components/ComponentPreview.astro";
+import { AddIcon } from "@components/icons/Add.solid";
+
+Use a FAB for the most important action on a screen; it appears in front of all other content.
+
+The FAB can be aligned left, center, or right. It can be positioned above the navigation bar, or nested within it.
+
+## Import
+
+```jsx
+import { FloatingActionButton } from "@m3-components/solid";
+```
+
+## Basic Style
+
+<ComponentPreview>
+    <FloatingActionButton position="unset" client:load>
+        <AddIcon/>
+    </FloatingActionButton>
+</ComponentPreview>
+
+
+```jsx
+import { AddIcon } from "your-components";
+
+<FloatingActionButton position="unset">
+    <AddIcon/>
+</FloatingActionButton>
+```

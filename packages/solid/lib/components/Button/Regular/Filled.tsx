@@ -5,7 +5,7 @@ import { getClass } from "@utils/getClass";
 
 export const FilledButton: Component<ButtonProps> = ({
 	children,
-	size = "s",
+	size = "small",
 	shape = "round",
 	ripple = true,
 	...rest
