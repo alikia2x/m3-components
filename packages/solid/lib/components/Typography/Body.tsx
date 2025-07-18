@@ -1,12 +1,12 @@
 import { Component, JSX } from "solid-js";
 import { tv } from "tailwind-variants";
-import { getClass } from "@utils/getClass";
+import { getRestProps } from "@utils/getClass";
 
 interface BodyProps extends JSX.HTMLAttributes<HTMLHeadingElement> {
 	variant?: "large" | "medium" | "small";
 }
 
-export const Body: Component<BodyProps> = ({ variant = "medium", children, ...props }) => {
+export const Body: Component<BodyProps> = (props) => {
 	const bodyStyle = tv({
 		base: "",
 		variants: {
@@ -17,10 +17,10 @@ export const Body: Component<BodyProps> = ({ variant = "medium", children, ...pr
 			}
 		}
 	});
-	const [className, restWithoutClass] = getClass(props);
+	const rest = getRestProps(props, ["class", "variant"]);
 	return (
-		<p class={bodyStyle({ className, variant })} {...restWithoutClass}>
-			{children}
+		<p class={bodyStyle({ class: props.class, variant: props.variant })} {...rest}>
+			{props.children}
 		</p>
 	);
 };

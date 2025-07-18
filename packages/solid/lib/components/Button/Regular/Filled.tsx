@@ -1,30 +1,31 @@
 import { Component } from "solid-js";
-import { ButtonProps, getShapeClasses, getSizeClasses } from "./index";
+import { baseButton, ButtonProps, getShapeClasses, getSizeClasses } from "./index";
 import { useRipple } from "@utils/useRipple";
-import { getClass } from "@utils/getClass";
+import { getRestProps } from "@utils/getClass";
+import { tv } from "tailwind-variants";
 
-export const FilledButton: Component<ButtonProps> = ({
-	children,
-	size = "small",
-	shape = "round",
-	ripple = true,
-	...rest
-}) => {
-	const sizeClasses = getSizeClasses(size);
-	const shapeClasses = getShapeClasses(shape, size);
-	const [className, restWithoutClass] = getClass(rest);
+export const FilledButton: Component<ButtonProps> = (props) => {
+	const rest = getRestProps(props, ["class", "ripple", "size", "shape"]);
 
-	const { onMouseDown } = useRipple({ ripple: ripple ?? true });
+	const { onMouseDown } = useRipple({ ripple: props.ripple ?? true });
+
+	const style = tv({
+		extend: baseButton,
+		base: "bg-primary text-on-primary duration-150 select-none \
+                flex items-center justify-center relative overflow-hidden"
+	})
 
 	return (
 		<button
-			class={`bg-primary text-on-primary duration-150 select-none
-                flex items-center justify-center relative overflow-hidden
-                ${sizeClasses} ${shapeClasses} ${className}`}
-			{...restWithoutClass}
+			class={style({
+				class: props.class,
+				shape: props.shape,
+				size: props.size
+			})}
+			{...rest}
 		>
 			<div class="absolute w-full h-full hover:bg-on-surface-variant/10" onMouseDown={onMouseDown}></div>
-			{children}
+			{props.children}
 		</button>
 	);
 };
