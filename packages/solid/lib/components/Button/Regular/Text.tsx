@@ -1,11 +1,10 @@
-import { Component } from "solid-js";
-import { baseButton, ButtonProps, getShapeClasses, getSizeClasses } from "./index";
+import { Component, splitProps } from "solid-js";
+import { baseButton, ButtonProps } from "./index";
 import { useRipple } from "@utils/useRipple";
-import { getRestProps } from "@utils/getClass";
 import { tv } from "tailwind-variants";
 
 export const TextButton: Component<ButtonProps> = (props) => {
-	const rest = getRestProps(props, ["class", "ripple", "size", "shape"]);
+	const [v, rest] = splitProps(props, ["class", "ripple", "size", "shape"]);
 
 	const stateLayerStyle = tv({
 		base: "absolute w-full h-full enabled:hover:bg-primary/10 enabled:dark:hover:bg-dark-primary/10 \
@@ -27,16 +26,16 @@ export const TextButton: Component<ButtonProps> = (props) => {
 		]
 	});
 
-	const { onMouseDown } = useRipple({ ripple: props.ripple ?? true });
+	const { onMouseDown } = useRipple({ ripple: v.ripple ?? true });
 
 	return (
 		<button
-			class={style({ class: props.class, shape: props.shape, size: props.size })}
+			class={style({ class: v.class, shape: v.shape, size: v.size })}
 			{...rest}
-			ref={props.ref as unknown as (el: HTMLButtonElement) => void}
+			ref={rest.ref as unknown as (el: HTMLButtonElement) => void}
 		>
-			<div class={stateLayerStyle({ disabled: props.disabled })} onMouseDown={onMouseDown}></div>
-			{props.children}
+			<div class={stateLayerStyle({ disabled: rest.disabled })} onMouseDown={onMouseDown}></div>
+			{rest.children}
 		</button>
 	);
 };

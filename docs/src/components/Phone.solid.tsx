@@ -1,13 +1,13 @@
-import { getClass } from "@m3-components/solid";
-import { type Accessor, type Component, type JSX } from "solid-js";
+import { splitProps, type Component, type JSX } from "solid-js";
 import { tv } from "tailwind-variants";
 
 interface PhoneProps extends JSX.HTMLAttributes<HTMLDivElement> {
-	scrolling?: Accessor<boolean>;
+	scrolling?: boolean;
 }
 
-export const PhoneStatusBar: Component<PhoneProps> = ({ scrolling, children, ...rest }) => {
-	const [className, restWithoutClass] = getClass(rest);
+export const PhoneStatusBar: Component<PhoneProps> = (props) => {
+	const [v, rest] = splitProps(props, ["class", "scrolling"]);
+	
 	const style = tv({
 		base: "flex justify-between h-16 py-4 px-6 sticky top-0 bg-background duration-150",
 		variants: {
@@ -18,7 +18,7 @@ export const PhoneStatusBar: Component<PhoneProps> = ({ scrolling, children, ...
 	});
 
 	return (
-		<div class={style({ className, scrolling: scrolling?.() })} {...restWithoutClass}>
+		<div class={style({ class: v.class, scrolling: v.scrolling })} {...rest}>
 			<div>9:41</div>
 			<div class="text-lg flex">
 				<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
@@ -40,13 +40,13 @@ export const PhoneStatusBar: Component<PhoneProps> = ({ scrolling, children, ...
 	);
 };
 
-export const Phone: Component<JSX.HTMLAttributes<HTMLDivElement>> = ({ children, ref }) => {
+export const Phone: Component<JSX.HTMLAttributes<HTMLDivElement>> = (props) => {
 	return (
 		<div
 			class="relative w-full h-80 overflow-y-scroll [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-			ref={ref}
+			ref={props.ref}
 		>
-			{children}
+			{props.children}
 		</div>
 	);
 };

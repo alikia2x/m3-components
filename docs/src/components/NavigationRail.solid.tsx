@@ -12,7 +12,7 @@ export const NavigationRailDemo: Component = () => {
 			label: "Home"
 		}
 	]);
-	const [active, setActive] = createSignal(-1);
+	const [active, setActive] = createSignal(0);
 	const [expanded, setExpanded] = createSignal(false);
 	const style = tv({
 		base: "bg-surface-container",
@@ -31,8 +31,6 @@ export const NavigationRailDemo: Component = () => {
 							activated={active() == index()}
 							label={action.label}
 							icon={action.icon}
-							class="bg-red-500"
-							aria-disabled={expanded()}
 							onClick={() => {
 								setActive(index);
 							}}

@@ -1,6 +1,5 @@
-import { Component, JSX } from "solid-js";
+import { Component, JSX, splitProps } from "solid-js";
 import { tv } from "tailwind-variants";
-import { getRestProps } from "@utils/getClass";
 
 interface BodyProps extends JSX.HTMLAttributes<HTMLHeadingElement> {
 	variant?: "large" | "medium" | "small";
@@ -17,10 +16,10 @@ export const Body: Component<BodyProps> = (props) => {
 			}
 		}
 	});
-	const rest = getRestProps(props, ["class", "variant"]);
+	const [v, rest] = splitProps(props, ["class", "variant"]);
 	return (
-		<p class={bodyStyle({ class: props.class, variant: props.variant })} {...rest}>
-			{props.children}
+		<p class={bodyStyle({ class: v.class, variant: v.variant })} {...rest}>
+			{rest.children}
 		</p>
 	);
 };

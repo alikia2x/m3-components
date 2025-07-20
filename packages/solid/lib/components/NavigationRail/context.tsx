@@ -1,16 +1,7 @@
-import { createContext, useContext } from "solid-js";
-import { NavigationRailProps } from "./index";
+import { Accessor, createContext, JSX } from "solid-js";
 
-export const NavigationRailContext = createContext<boolean>();
+export const NavigationRailContext = createContext<Accessor<boolean>>();
 
-export function NRProvider(props: NavigationRailProps) {
-	return (
-		<NavigationRailContext.Provider value={props.expanded}>
-			{props.children}
-		</NavigationRailContext.Provider>
-	);
-}
-
-export function useNRContext() {
-	return useContext(NavigationRailContext);
+export function NRProvider(props: { children: JSX.Element; expanded: Accessor<boolean> }) {
+	return <NavigationRailContext.Provider value={props.expanded}>{props.children}</NavigationRailContext.Provider>;
 }

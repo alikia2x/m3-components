@@ -48,14 +48,14 @@ export const AppBarDemo: Component = () => {
 	
 	return (
 		<Phone ref={container}>
-			<PhoneStatusBar scrolling={scrolling} />
-			<AppBar variant="search" scrolling={scrolling} class="top-16">
+			<PhoneStatusBar scrolling={scrolling()} />
+			<AppBar variant="search" scrolling={scrolling()} class="top-16">
 				<LeadingElement>
 					<IconButton>
 						<MenuIcon />
 					</IconButton>
 				</LeadingElement>
-				<AppBarSearchBox placeholder="Search" scrolling={scrolling} />
+				<AppBarSearchBox placeholder="Search"/>
 				<TrailingElementGroup>
 					<TrailingElement>
 						<IconButton>

@@ -1,5 +1,4 @@
-import { Component, JSX } from "solid-js";
-import { getRestProps } from "@utils/getClass";
+import { Component, JSX, splitProps } from "solid-js";
 import { tv } from "tailwind-variants";
 
 export interface CardMediaProps extends JSX.HTMLAttributes<HTMLImageElement> {
@@ -8,7 +7,7 @@ export interface CardMediaProps extends JSX.HTMLAttributes<HTMLImageElement> {
 }
 
 export const CardMedia: Component<CardMediaProps> = (props) => {
-	const rest = getRestProps(props, ["class", "round", "alt"]);
+	const [v, rest] = splitProps(props, ["class", "round", "alt"]);
 	const style = tv({
 		base: "w-full bg-cover object-cover p-0",
 		variants: {
@@ -17,5 +16,5 @@ export const CardMedia: Component<CardMediaProps> = (props) => {
 			}
 		}
 	});
-	return <img class={style({ class: props.class, round: props.round })} alt={props.alt} {...rest} />;
+	return <img class={style({ class: v.class, round: v.round })} alt={v.alt} {...rest} />;
 };

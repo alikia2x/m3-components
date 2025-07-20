@@ -9,7 +9,7 @@ import {
 import { GitHub } from "@components/icons/GitHub.solid.js";
 import { type Component, createSignal, type JSX, onCleanup, onMount } from "solid-js";
 
-export const TopAppBar: Component<JSX.HTMLAttributes<HTMLElement>> = (props) => {
+export const TopAppBar: Component<JSX.HTMLAttributes<HTMLElement>> = () => {
 	const [scrolling, setScrolling] = createSignal(false);
 
 	const handleScroll = () => {
@@ -32,7 +32,7 @@ export const TopAppBar: Component<JSX.HTMLAttributes<HTMLElement>> = (props) => 
 	});
 
 	return (
-		<AppBar variant="search" scrolling={scrolling} class="fixed inset-x-0 top-0 z-20 px-2">
+		<AppBar variant="search" scrolling={scrolling()} class="fixed inset-x-0 top-0 z-20 px-2">
 			<LeadingElement>
 				<div class="rounded-full w-12 h-12 flex items-center justify-center bg-blue-200/50 dark:bg-blue-300">
 					<span class="text-xl font-medium translate-x-[1.5px] text-blue-900">
@@ -40,7 +40,7 @@ export const TopAppBar: Component<JSX.HTMLAttributes<HTMLElement>> = (props) => 
 					</span>
 				</div>
 			</LeadingElement>
-			<AppBarSearchBox placeholder="Search" scrolling={scrolling} />
+			<AppBarSearchBox placeholder="Search" />
 			<TrailingElementGroup>
 				<TrailingElement>
 					<IconButton class="font-2xl w-12 h-12 text-on-background">

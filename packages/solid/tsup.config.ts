@@ -10,7 +10,7 @@ function generateConfig(jsx: boolean): Options {
         dts: !jsx,
         entry: ["./lib/index.ts"],
         outDir: "dist/",
-        treeshake: { preset: "smallest" },
+        treeshake: false,
         replaceNodeEnv: true,
         esbuildOptions(options) {
             if (jsx) {

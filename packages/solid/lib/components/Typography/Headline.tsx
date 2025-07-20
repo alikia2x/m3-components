@@ -1,6 +1,5 @@
-import { Component, JSX } from "solid-js";
+import { Component, JSX, splitProps } from "solid-js";
 import { tv } from "tailwind-variants";
-import { getRestProps } from "@utils/getClass";
 import { type HeadlineLevel, NativeHeading } from "./NativeHeading";
 
 interface HeadlineProps extends JSX.HTMLAttributes<HTMLHeadingElement> {
@@ -19,10 +18,10 @@ export const Headline: Component<HeadlineProps> = (props) => {
 			}
 		}
 	});
-	const rest = getRestProps(props, ["class", "variant", "level"]);
+	const[v, rest] = splitProps(props, ["class", "variant", "level"]);
 	return (
-		<NativeHeading level={props.level || "h1"} class={headlineStyle({ class: props.class, variant: props.variant })} {...rest}>
-			{props.children}
+		<NativeHeading level={v.level || "h1"} class={headlineStyle({ class: v.class, variant: v.variant })} {...rest}>
+			{rest.children}
 		</NativeHeading>
 	);
 };

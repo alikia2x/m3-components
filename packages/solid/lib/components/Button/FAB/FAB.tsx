@@ -1,6 +1,5 @@
-import { Component, JSX } from "solid-js";
+import { Component, JSX, splitProps } from "solid-js";
 import { useRipple } from "@utils/useRipple";
-import { getClass } from "@utils/getClass";
 import { tv } from "tailwind-variants";
 
 export interface FloatingActionButtonProps extends JSX.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -11,14 +10,8 @@ export interface FloatingActionButtonProps extends JSX.ButtonHTMLAttributes<HTML
 	position: "left" | "right" | "unset";
 }
 
-export const FloatingActionButton: Component<FloatingActionButtonProps> = ({
-	children,
-	size = "baseline",
-	color = "primary-container",
-	elevation = true,
-	position = "right",
-	...rest
-}) => {
+export const FloatingActionButton: Component<FloatingActionButtonProps> = (props) => {
+	const [v, rest] = splitProps(props, ["class", "size", "color", "elevation", "position"]);
 	const style = tv({
 		base: "relative overflow-clip duration-150 select-none",
 		variants: {
@@ -42,18 +35,34 @@ export const FloatingActionButton: Component<FloatingActionButtonProps> = ({
 				baseline: "w-14 h-14 p-4 rounded-2xl",
 				medium: "w-20 h-20 p-5 rounded-[1.25rem]",
 				large: "w-24 h-24 p-7 rounded-[1.75rem]"
-			},
+			}
+		},
+		defaultVariants: {
+			position: "right",
+			color: "primary-container",
+			elevation: true,
+			size: "baseline"
 		}
 	});
-
-	const [className, restWithoutClass] = getClass(rest);
 
 	const { onMouseDown } = useRipple();
 
 	return (
-		<button class={style({ className, size, color, elevation, position })} {...restWithoutClass}>
-			<div class="absolute top-0 left-0 w-full h-full hover:bg-on-surface-variant/10" onMouseDown={onMouseDown}></div>
-			{children}
+		<button
+			class={style({
+				class: v.class,
+				size: v.size,
+				color: v.color,
+				elevation: v.elevation,
+				position: v.position
+			})}
+			{...rest}
+		>
+			<div
+				class="absolute top-0 left-0 w-full h-full hover:bg-on-surface-variant/10"
+				onMouseDown={onMouseDown}
+			></div>
+			{rest.children}
 		</button>
 	);
 };
