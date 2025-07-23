@@ -40,11 +40,11 @@ export const getSizeClasses = (size: ButtonSize) => {
 export const baseButton = tv({
 	variants: {
 		size: {
-            "extra-small": "text-sm leading-5 h-8 px-3",
+			"extra-small": "text-sm leading-5 h-8 px-3",
 			small: "text-sm leading-5 h-10 px-4",
 			medium: "text-base leading-6 h-14 px-6",
 			large: "text-2xl h-24 px-12",
-            "extra-large": "text-[2rem] leading-10 h-34 px-16"
+			"extra-large": "text-[2rem] leading-10 h-34 px-16"
 		},
 		shape: {
 			round: "rounded-full",
@@ -58,10 +58,10 @@ export const baseButton = tv({
 			class: "rounded-xl"
 		}
 	],
-    defaultVariants: {
-        size: "small",
-        shape: "round"
-    }
+	defaultVariants: {
+		size: "small",
+		shape: "round"
+	}
 });
 
 export const Button: Component<ButtonRootProps> = (props) => {

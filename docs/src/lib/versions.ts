@@ -1,14 +1,14 @@
 export const versionsMap = {
-    "/docs/react": {
-        lib: "React",
-        version: "0.0.3"
-    },
-    "/docs/solid": {
-        "lib": "Solid",
-        "version": "0.1.0"
-    },
-    "/docs": {
-        "lib": "Overview",
-        "version": null
-    }
-}
+	"/docs/react": {
+		lib: "React",
+		version: "0.0.3"
+	},
+	"/docs/solid": {
+		lib: "Solid",
+		version: "0.1.0"
+	},
+	"/docs": {
+		lib: "Overview",
+		version: null
+	}
+};

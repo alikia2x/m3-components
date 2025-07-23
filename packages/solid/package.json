@@ -1,40 +1,42 @@
 {
-    "name": "@m3-components/solid",
-    "version": "0.1.0",
-    "private": false,
-    "license": "MIT",
-    "type": "module",
-    "files": [
-        "dist"
-    ],
-    "main": "dist/main.js",
-    "types": "dist/main.d.ts",
-    "scripts": {
-        "build": "pnpm build:tsx && pnpm build:css",
-        "build:tsx": "tsup --config ./tsup.config.ts --minify",
-        "build:css": "pnpx @tailwindcss/cli -i ./lib/styles/main.css -o ./dist/index.css"
-    },
-    "exports": {
-        ".": {
-            "types": "./dist/index.d.ts",
-            "solid": "./dist/index.jsx",
-            "default": "./dist/index.js"
-        },
-        "./index.css": "./dist/index.css"
-    },
-    "peerDependencies": {
-        "solid-js": "^1.9.4"
-    },
-    "dependencies": {
-        "animejs": "^4.0.2",
-        "solid-js": "^1.9.5",
-        "tailwind-variants": "^1.0.0"
-    },
-    "devDependencies": {
-        "@tailwindcss/cli": "^4.1.11",
-        "esbuild-plugin-solid": "^0.6.0",
-        "tailwindcss": "^4.1.11",
-        "tsup": "^8.3.6",
-        "typescript": "~5.8.3"
-    }
+	"name": "@m3-components/solid",
+	"version": "0.1.0",
+	"private": false,
+	"license": "MIT",
+	"type": "module",
+	"files": [
+		"dist"
+	],
+	"main": "dist/main.js",
+	"types": "dist/main.d.ts",
+	"scripts": {
+		"build": "pnpm build:tsx && pnpm build:css",
+		"build:tsx": "tsup --config ./tsup.config.ts --minify",
+		"build:css": "pnpx @tailwindcss/cli -i ./lib/styles/main.css -o ./dist/index.css",
+		"format": "prettier . --write"
+	},
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"solid": "./dist/index.jsx",
+			"default": "./dist/index.js"
+		},
+		"./index.css": "./dist/index.css"
+	},
+	"peerDependencies": {
+		"solid-js": "^1.9.4"
+	},
+	"dependencies": {
+		"animejs": "^4.0.2",
+		"solid-js": "^1.9.5",
+		"tailwind-variants": "^1.0.0"
+	},
+	"devDependencies": {
+		"prettier": "^3.5.3",
+		"@tailwindcss/cli": "^4.1.11",
+		"esbuild-plugin-solid": "^0.6.0",
+		"tailwindcss": "^4.1.11",
+		"tsup": "^8.3.6",
+		"typescript": "~5.8.3"
+	}
 }

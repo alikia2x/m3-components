@@ -3,9 +3,10 @@
 	"private": true,
 	"scripts": {
 		"build": "turbo run build",
-		"dev": "turbo run dev"
+		"dev": "turbo run dev",
+		"format": "turbo run format"
 	},
-	"packageManager": "pnpm@10.11.1",
+	"packageManager": "pnpm@10.13.1",
 	"devDependencies": {
 		"prettier": "^3.5.3",
 		"turbo": "^2.5.4",

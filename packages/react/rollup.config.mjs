@@ -12,69 +12,69 @@ import tailwindcss from "@tailwindcss/postcss";
 import tailwindConfig from "./tailwind.config.js";
 
 const outputOptions = {
-    sourcemap: false,
-    preserveModules: true,
-    preserveModulesRoot: "src",
+	sourcemap: false,
+	preserveModules: true,
+	preserveModulesRoot: "src"
 };
 
 const tscAlias = () => {
-    return {
-        name: "tsAlias",
-        writeBundle: () => {
-            return new Promise((resolve, reject) => {
-                exec("tsc-alias", function callback(error, stdout, stderr) {
-                    if (stderr || error) {
-                        reject(stderr || error);
-                    } else {
-                        resolve(stdout);
-                    }
-                });
-            });
-        },
-    };
+	return {
+		name: "tsAlias",
+		writeBundle: () => {
+			return new Promise((resolve, reject) => {
+				exec("tsc-alias", function callback(error, stdout, stderr) {
+					if (stderr || error) {
+						reject(stderr || error);
+					} else {
+						resolve(stdout);
+					}
+				});
+			});
+		}
+	};
 };
 
 export default [
-    {
-        input: ["src/index.ts"],
-        output: [
-            {
-                dir: "dist",
-                format: "esm",
-                entryFileNames: "[name].mjs",
-                ...outputOptions,
-            }
-        ],
-        external: ["clsx", "react", "motion", "tslib", "date-fns", "react-dom", "@babel/runtime"],
-        plugins: [
-            peerDepsExternal(),
-            json(),
-            resolve(),
-            commonjs(),
-            typescript({
-                tsconfig: "./tsconfig.json",
-            }),
-            postcss(),
-            typescriptPaths(),
-            preserveDirectives(),
-            terser({ compress: { directives: false } }),
-            tscAlias(),
-        ],
-        onwarn(warning, warn) {
-            if (warning.code !== "MODULE_LEVEL_DIRECTIVE") {
-                warn(warning);
-            }
-        },
-    },
-    {
-        input: "src/styles/main.css",
-        output: [{ file: "dist/index.css", format: "es" }],
-        plugins: [
-            postcss({
-                extract: true,
-                minimize: true,
-                plugins: [tailwindcss(tailwindConfig)],
-            }),
-        ],
-    },
+	{
+		input: ["src/index.ts"],
+		output: [
+			{
+				dir: "dist",
+				format: "esm",
+				entryFileNames: "[name].mjs",
+				...outputOptions
+			}
+		],
+		external: ["clsx", "react", "motion", "tslib", "date-fns", "react-dom", "@babel/runtime"],
+		plugins: [
+			peerDepsExternal(),
+			json(),
+			resolve(),
+			commonjs(),
+			typescript({
+				tsconfig: "./tsconfig.json"
+			}),
+			postcss(),
+			typescriptPaths(),
+			preserveDirectives(),
+			terser({ compress: { directives: false } }),
+			tscAlias()
+		],
+		onwarn(warning, warn) {
+			if (warning.code !== "MODULE_LEVEL_DIRECTIVE") {
+				warn(warning);
+			}
+		}
+	},
+	{
+		input: "src/styles/main.css",
+		output: [{ file: "dist/index.css", format: "es" }],
+		plugins: [
+			postcss({
+				extract: true,
+				minimize: true,
+				plugins: [tailwindcss(tailwindConfig)]
+			})
+		]
+	}
 ];

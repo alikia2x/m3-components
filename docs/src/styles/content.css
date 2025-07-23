@@ -4,22 +4,22 @@
 	}
 
 	.content h1 {
-        font-size: 3.5625rem;
+		font-size: 3.5625rem;
 		line-height: 4rem;
 	}
 
 	.content h2 {
-        font-size: 1.75rem;
+		font-size: 1.75rem;
 		line-height: 2.25rem;
 		margin: 1.5rem 0 1.25rem 0;
 	}
 
 	.content h3 {
-        font-size: 1.375rem;
+		font-size: 1.375rem;
 		line-height: 1.75rem;
 		margin: 1rem 0;
 	}
-	
+
 	.content li {
 		list-style: disc;
 		list-style-position: inside;
@@ -43,7 +43,7 @@
 	.content a {
 		color: var(--md-sys-color-primary);
 	}
-	
+
 	.content code {
 		font-family: "IBM Plex Mono", monospace;
 	}

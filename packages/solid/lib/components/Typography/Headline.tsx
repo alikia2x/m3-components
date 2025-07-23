@@ -18,7 +18,7 @@ export const Headline: Component<HeadlineProps> = (props) => {
 			}
 		}
 	});
-	const[v, rest] = splitProps(props, ["class", "variant", "level"]);
+	const [v, rest] = splitProps(props, ["class", "variant", "level"]);
 	return (
 		<NativeHeading level={v.level || "h1"} class={headlineStyle({ class: v.class, variant: v.variant })} {...rest}>
 			{rest.children}

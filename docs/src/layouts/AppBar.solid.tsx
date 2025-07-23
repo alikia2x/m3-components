@@ -44,7 +44,7 @@ export const TopAppBar: Component<JSX.HTMLAttributes<HTMLElement>> = () => {
 			<TrailingElementGroup>
 				<TrailingElement>
 					<IconButton class="font-2xl w-12 h-12 text-on-background">
-						<GitHub  />
+						<GitHub />
 					</IconButton>
 				</TrailingElement>
 			</TrailingElementGroup>

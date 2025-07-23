@@ -7,7 +7,7 @@ interface PhoneProps extends JSX.HTMLAttributes<HTMLDivElement> {
 
 export const PhoneStatusBar: Component<PhoneProps> = (props) => {
 	const [v, rest] = splitProps(props, ["class", "scrolling"]);
-	
+
 	const style = tv({
 		base: "flex justify-between h-16 py-4 px-6 sticky top-0 bg-background duration-150",
 		variants: {

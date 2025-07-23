@@ -3,13 +3,13 @@ title: App bars
 description: App bars are placed at the top of the screen to help people navigate through a product
 ---
 
-import { AppBarDemo } from '@components/demo/solid/AppBar';
+import { AppBarDemo } from "@components/demo/solid/AppBar";
 import ComponentPreview from "@components/ComponentPreview.astro";
 
 ## Search App Bar
 
 <ComponentPreview className="!p-0 overflow-clip">
-    <AppBarDemo client:load/>
+	<AppBarDemo client:load />
 </ComponentPreview>
 
 ```jsx
@@ -25,9 +25,9 @@ import {
 } from "@m3-components/solid";
 
 const App = () => {
-    let container;
-    const [scrolling, setScrolling] = createSignal(false);
-    const scroll = createScrollPosition(() => container);
+	let container;
+	const [scrolling, setScrolling] = createSignal(false);
+	const scroll = createScrollPosition(() => container);
 
 	createEffect(() => {
 		const currentPos = scroll.y;
@@ -38,25 +38,25 @@ const App = () => {
 		}
 	});
 
-    return (
-        <div ref={container}>
-            <AppBar variant="search" scrolling={scrolling}>
-                <LeadingElement>
-                    <IconButton>
-                        <MenuIcon />
-                    </IconButton>
-                </LeadingElement>
-                <AppBarSearchBox placeholder="Search" scrolling={scrolling} />
-                <TrailingElementGroup>
-                    <TrailingElement>
-                        <IconButton>
-                            <UserIcon />
-                        </IconButton>
-                    </TrailingElement>
-                </TrailingElementGroup>
-            </AppBar>
-            <LoremIpsum/>
-        </div>
-    )
-}
+	return (
+		<div ref={container}>
+			<AppBar variant="search" scrolling={scrolling}>
+				<LeadingElement>
+					<IconButton>
+						<MenuIcon />
+					</IconButton>
+				</LeadingElement>
+				<AppBarSearchBox placeholder="Search" scrolling={scrolling} />
+				<TrailingElementGroup>
+					<TrailingElement>
+						<IconButton>
+							<UserIcon />
+						</IconButton>
+					</TrailingElement>
+				</TrailingElementGroup>
+			</AppBar>
+			<LoremIpsum />
+		</div>
+	);
+};
 ```

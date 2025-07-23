@@ -45,7 +45,7 @@ export const AppBarDemo: Component = () => {
 			setScrolling(false);
 		}
 	});
-	
+
 	return (
 		<Phone ref={container}>
 			<PhoneStatusBar scrolling={scrolling()} />
@@ -55,7 +55,7 @@ export const AppBarDemo: Component = () => {
 						<MenuIcon />
 					</IconButton>
 				</LeadingElement>
-				<AppBarSearchBox placeholder="Search"/>
+				<AppBarSearchBox placeholder="Search" />
 				<TrailingElementGroup>
 					<TrailingElement>
 						<IconButton>

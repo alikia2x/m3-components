@@ -3,7 +3,7 @@ title: FAB
 description: Floating action buttons (FABs) help people take primary actions
 ---
 
-import { FloatingActionButton } from '@m3-components/solid';
+import { FloatingActionButton } from "@m3-components/solid";
 import ComponentPreview from "@components/ComponentPreview.astro";
 import { AddIcon } from "@components/icons/Add.solid";
 
@@ -20,18 +20,17 @@ import { FloatingActionButton } from "@m3-components/solid";
 ## Basic Style
 
 <ComponentPreview>
-    <FloatingActionButton position="unset" client:load>
-        <AddIcon/>
-    </FloatingActionButton>
+	<FloatingActionButton position="unset" client:load>
+		<AddIcon />
+	</FloatingActionButton>
 </ComponentPreview>
-
 
 ```jsx
 import { AddIcon } from "your-components";
 
 <FloatingActionButton position="unset">
-    <AddIcon/>
-</FloatingActionButton>
+	<AddIcon />
+</FloatingActionButton>;
 ```
 
 ## Positioning
@@ -40,7 +39,7 @@ The floating action button will be fixed at the bottom-right corner of the scree
 with a margin of 16px.
 
 <ComponentPreview className="translate-y-0.5 relative !h-40">
-    <FloatingActionButton client:load>
-        <AddIcon/>
-    </FloatingActionButton>
+	<FloatingActionButton client:load>
+		<AddIcon />
+	</FloatingActionButton>
 </ComponentPreview>

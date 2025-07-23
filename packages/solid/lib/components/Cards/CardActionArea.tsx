@@ -12,7 +12,10 @@ export const CardActionArea: Component<CardActionAreaProps> = ({ children, ...pr
 	const { onMouseDown } = useRipple();
 	return (
 		<div class={style({ class: v.class })} {...rest}>
-			<div class="hover:bg-on-surface/[0.08] absolute top-0 left-0 w-full h-full duration-150" onMouseDown={onMouseDown}></div>
+			<div
+				class="hover:bg-on-surface/[0.08] absolute top-0 left-0 w-full h-full duration-150"
+				onMouseDown={onMouseDown}
+			></div>
 			{children}
 		</div>
 	);

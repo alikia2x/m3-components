@@ -12,7 +12,7 @@ export const FilledButton: Component<ButtonProps> = (props) => {
 		extend: baseButton,
 		base: "bg-primary text-on-primary duration-150 select-none \
                 flex items-center justify-center relative overflow-hidden"
-	})
+	});
 
 	return (
 		<button

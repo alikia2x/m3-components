@@ -1,13 +1,17 @@
 {
     "$schema": "https://turborepo.com/schema.json",
     "tasks": {
+        "docs#build": {
+            "dependsOn": ["@m3-components/react#build", "@m3-components/solid#build"]  
+        },
         "build": {
             "outputs": ["dist/**"]
         },
-        "check-types": {
-            "dependsOn": ["^check-types"]
-        },
         "dev": {
+            "persistent": true,
+            "cache": false
+        },
+        "format": {
             "persistent": true,
             "cache": false
         }
