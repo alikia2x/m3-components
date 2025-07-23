@@ -1,6 +1,6 @@
 import { type Component, createSignal, For, Match, Switch } from "solid-js";
 import { NavigationRail, NavigationRailAction } from "@m3-components/solid";
-import { Desktop } from "@components/Desktop.solid.tsx";
+import { Desktop } from "@components/demo/solid/Desktop.tsx";
 import { Home } from "@components/icons/Home.solid.tsx";
 import { Button } from "@m3-components/solid";
 import { tv } from "tailwind-variants";

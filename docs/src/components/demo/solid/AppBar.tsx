@@ -8,7 +8,7 @@ import {
 	TrailingElementGroup,
 	TrailingElement
 } from "@m3-components/solid";
-import { Phone, PhoneStatusBar } from "./Phone.solid.tsx";
+import { Phone, PhoneStatusBar } from "./Phone.tsx";
 
 const MenuIcon: Component = () => {
 	return (
