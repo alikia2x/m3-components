@@ -74,19 +74,28 @@ export const NavigationRailAction: Component<NRActionProps> = (props) => {
 	});
 
 	createEffect(() => {
-		if (!el) return;
+		if (!el || !v.activated) return;
 		if (expanded()) {
 			animate(el, {
-				width: 64 + labelWidth(),
-				duration: initialized() ? 200 : 0
+				width: [
+					{ to: 56, duration: 0 },
+					{ to: 64 + labelWidth(), duration: initialized() ? 200 : 0, delay: 0 }
+				],
+				opacity: [
+					{ to: 0, duration: 0 },
+					{ to: 1, duration: initialized() ? 200 : 0, delay: 0 }
+				],
 			});
-		}
-		else {
+		} else {
 			animate(el, {
 				width: [
 					{ to: 0, duration: 0 },
 					{ to: 56, duration: initialized() ? 200 : 0, delay: 0 }
-				]
+				],
+				opacity: [
+					{ to: 0, duration: 0 },
+					{ to: 1, duration: initialized() ? 200 : 0, delay: 0 }
+				],
 			});
 		}
 		setInitialized(true);
@@ -97,7 +106,7 @@ export const NavigationRailAction: Component<NRActionProps> = (props) => {
 			<div class={activeIndicatorStyle({ activated: v.activated, expanded: expanded() })} ref={el} />
 			<div class={iconStyle({ expanded: expanded() })}>{v.icon}</div>
 			<div class={labelStyle({ expanded: expanded() })}>
-				<span class="text-sm leading-5" ref={labelElement}>
+				<span class="text-sm leading-5 select-none" ref={labelElement}>
 					{v.label}
 				</span>
 			</div>
@@ -227,24 +236,46 @@ export const NavigationRailActions: Component<JSX.HTMLAttributes<HTMLDivElement>
 };
 
 export const NavigationRailInner: Component<NavigationRailProps> = (props) => {
-	const style = tv({
-		base: "h-full flex flex-col pt-10 fixed duration-250 ease-[cubic-bezier(.2,0,0,1)]",
-		variants: {
-			expanded: {
-				true: "",
-				false: "w-24"
+	let el: HTMLElement | undefined;
+	const defaultWidth = 220;
+
+	const [v, rest] = splitProps(props, ["class", "expanded", "width"]);
+	const [initialized, setInitialized] = createSignal(false);
+	const [lastExpanded, setLastExpanded] = createSignal(v.expanded);
+
+	const clip = (value: number, min: number, max: number) => Math.min(Math.max(value, min), max);
+
+	createEffect(() => {
+		if (!el) return;
+		if (initialized() && lastExpanded() != v.expanded) {
+			if (v.expanded) {
+				animate(el, {
+					width: clip(v.width || defaultWidth, 220, 360),
+					duration: 250,
+					ease: "cubicBezier(0.2, 0, 0, 1)"
+				});
+			} else {
+				animate(el, {
+					width: 96,
+					duration: 250,
+					ease: "cubicBezier(0.2, 0, 0, 1)"
+				});
 			}
+			setLastExpanded(v.expanded);
+		} else {
+			setInitialized(true);
+			utils.set(el, {
+				width: v.expanded ? clip(v.width || defaultWidth, 220, 360) : 96
+			});
 		}
 	});
 
-	const [v, rest] = splitProps(props, ["class", "expanded", "width"]);
+	const style = tv({
+		base: "h-full flex flex-col pt-10 fixed"
+	});
 
 	return (
-		<nav
-			class={style({ class: v.class, expanded: v.expanded })}
-			style={v.expanded ? `width: ${v.width}px;` : ""}
-			{...rest}
-		>
+		<nav class={style({ class: v.class })} ref={el} {...rest}>
 			{rest.children}
 		</nav>
 	);
