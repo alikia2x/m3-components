@@ -228,7 +228,7 @@ export const NavigationRailActions: Component<JSX.HTMLAttributes<HTMLDivElement>
 
 export const NavigationRailInner: Component<NavigationRailProps> = (props) => {
 	const style = tv({
-		base: "h-full flex flex-col pt-10 fixed duration-200",
+		base: "h-full flex flex-col pt-10 fixed duration-250 ease-[cubic-bezier(.2,0,0,1)]",
 		variants: {
 			expanded: {
 				true: "",
