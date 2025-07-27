@@ -17,11 +17,15 @@ export const IconButton: Component<IconButtonProps> = (props) => {
         disabled:dark:text-dark-on-surface/40"
 	});
 	const stateLayerStyles = tv({
-		base: "absolute w-full h-full enabled:hover:bg-primary/10 enabled:dark:hover:bg-dark-primary/10 left-10 top-0",
+		base: "absolute w-full h-full z-50",
 		variants: {
 			disabled: {
-				true: "bg-on-surface/10 dark:bg-dark-on-surface/10"
+				true: "bg-on-surface/10 dark:bg-dark-on-surface/10",
+				false: "hover:bg-primary/10"
 			}
+		},
+		defaultVariants: {
+			disabled: false
 		}
 	});
 
@@ -31,7 +35,7 @@ export const IconButton: Component<IconButtonProps> = (props) => {
 			{...rest}
 			ref={v.ref as unknown as (el: HTMLButtonElement) => void}
 		>
-			<div class={stateLayerStyles({ disabled: v.disabled })} onMouseDown={onMouseDown}></div>
+			<div class={stateLayerStyles({ disabled: v.disabled || false })} onMouseDown={onMouseDown}></div>
 			{rest.children}
 		</button>
 	);
