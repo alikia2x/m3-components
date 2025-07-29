@@ -1,9 +1,10 @@
-import { Component, createEffect, createSignal, JSX, Match, splitProps, Switch, useContext } from "solid-js";
+import { children, Component, createEffect, createSignal, JSX, Match, splitProps, Switch, useContext } from "solid-js";
 import { tv } from "tailwind-variants";
 import { NavigationRailContext, NRProvider } from "./context";
 import { animate, utils } from "animejs";
 import { IconButton } from "../Button/Icon";
 import { Menu, MenuOpen } from "./icon";
+import { FloatingActionButton, FloatingActionButtonProps } from "../Button";
 
 export interface NavigationRailProps extends JSX.HTMLAttributes<HTMLElement> {
 	expanded?: boolean;
@@ -84,7 +85,7 @@ export const NavigationRailAction: Component<NRActionProps> = (props) => {
 				opacity: [
 					{ to: 0, duration: 0 },
 					{ to: 1, duration: initialized() ? 200 : 0, delay: 0 }
-				],
+				]
 			});
 		} else {
 			animate(el, {
@@ -95,7 +96,7 @@ export const NavigationRailAction: Component<NRActionProps> = (props) => {
 				opacity: [
 					{ to: 0, duration: 0 },
 					{ to: 1, duration: initialized() ? 200 : 0, delay: 0 }
-				],
+				]
 			});
 		}
 		setInitialized(true);
@@ -111,6 +112,67 @@ export const NavigationRailAction: Component<NRActionProps> = (props) => {
 				</span>
 			</div>
 		</div>
+	);
+};
+
+interface NavigationRailFABProps extends Omit<FloatingActionButtonProps, "position"> {
+	text?: string;
+}
+
+export const NavigationRailFAB: Component<NavigationRailFABProps> = (props) => {
+	let el: HTMLDivElement | undefined;
+	let btn: HTMLButtonElement | undefined;
+	const [v, rest] = splitProps(props, ["class", "text"]);
+	const [initialized, setInitialized] = createSignal(false);
+	const expanded = useContext(NavigationRailContext) || (() => false);
+	const [labelWidth, setLabelWidth] = createSignal(0);
+	const style = tv({
+		base: "flex gap-2 top-5 left-5"
+	});
+
+	const textStyle = tv({
+		base: "text-base font-medium leading-6 duration-100 whitespace-nowrap",
+		variants: {
+			expanded: {
+				false: "opacity-0",
+				true: "opacity-100"
+			}
+		}
+	});
+
+	createEffect(() => {
+		if (!el || !btn) return;
+		const testEl = document.createElement("div");
+		testEl.classList.add("text-base", "font-medium", "leading-6", "duration-100", "fixed");
+		testEl.textContent = v.text || "";
+		btn.appendChild(testEl);
+		setLabelWidth(testEl.getBoundingClientRect().width || 0);
+		btn.removeChild(testEl);
+	});
+
+	createEffect(() => {
+		if (!btn) return;
+		if (expanded()) {
+			animate(btn, {
+				width: 64 + labelWidth(),
+				duration: initialized() ? 100 : 0
+			});
+		} else {
+			animate(btn, {
+				width: 56,
+				duration: initialized() ? 100 : 0
+			});
+		}
+		setInitialized(true);
+	});
+
+	return (
+		<FloatingActionButton class={style({ class: v.class })} ref={btn} position="unset" {...rest}>
+			<div class="w-6 h-6">{rest.children}</div>
+			<span class={textStyle({ expanded: expanded() })} ref={el}>
+				{v.text}
+			</span>
+		</FloatingActionButton>
 	);
 };
 

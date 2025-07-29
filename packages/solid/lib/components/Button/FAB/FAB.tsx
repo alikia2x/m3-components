@@ -4,10 +4,10 @@ import { tv } from "tailwind-variants";
 
 export interface FloatingActionButtonProps extends JSX.ButtonHTMLAttributes<HTMLButtonElement> {
 	children?: JSX.Element;
-	size: "baseline" | "medium" | "large";
-	color: "primary-container" | "secondary-container" | "tertiary-container" | "primary" | "secondary" | "tertiary";
-	elevation: boolean;
-	position: "left" | "right" | "unset";
+	size?: "baseline" | "medium" | "large";
+	color?: "primary-container" | "secondary-container" | "tertiary-container" | "primary" | "secondary" | "tertiary";
+	elevation?: boolean;
+	position?: "left" | "right" | "unset";
 }
 
 export const FloatingActionButton: Component<FloatingActionButtonProps> = (props) => {
