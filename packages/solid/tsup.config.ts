@@ -7,24 +7,24 @@ function generateConfig(jsx: boolean): Options {
 		platform: "browser",
 		format: "esm",
 		clean: true,
-		dts: !jsx,
+		dts: jsx,
 		entry: ["./lib/index.ts"],
 		outDir: "dist/",
-		treeshake: false,
+		treeshake: true,
 		replaceNodeEnv: true,
 		esbuildOptions(options) {
 			if (jsx) {
 				options.jsx = "preserve";
 			}
 			options.chunkNames = "[name]/[hash]";
-			options.drop = ["console", "debugger"];
+			//options.drop = ["console", "debugger"];
 		},
 		outExtension() {
 			return jsx ? { js: ".jsx" } : {};
 		},
-		// @ts-ignore
-		esbuildPlugins: !jsx ? [solidPlugin({ solid: { generate: "dom" } })] : []
+		// // @ts-ignore
+		// esbuildPlugins: !jsx ? [solidPlugin({ solid: { generate: "dom" } })] : []
 	};
 }
 
-export default defineConfig([generateConfig(false), generateConfig(true)]);
+export default defineConfig([generateConfig(true)]);

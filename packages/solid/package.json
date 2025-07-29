@@ -1,6 +1,6 @@
 {
 	"name": "@m3-components/solid",
-	"version": "0.1.6",
+	"version": "0.1.7",
 	"private": false,
 	"license": "MIT",
 	"type": "module",
@@ -18,8 +18,7 @@
 	"exports": {
 		".": {
 			"types": "./dist/index.d.ts",
-			"solid": "./dist/index.jsx",
-			"default": "./dist/index.js"
+			"solid": "./dist/index.jsx"
 		},
 		"./index.css": "./dist/index.css"
 	},

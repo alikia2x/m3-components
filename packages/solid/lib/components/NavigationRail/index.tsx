@@ -1,4 +1,15 @@
-import { children, Component, createEffect, createSignal, JSX, Match, splitProps, Switch, useContext } from "solid-js";
+import {
+	children,
+	Component,
+	createEffect,
+	createMemo,
+	createSignal,
+	JSX,
+	Match,
+	splitProps,
+	Switch,
+	useContext
+} from "solid-js";
 import { tv } from "tailwind-variants";
 import { NavigationRailContext, NRProvider } from "./context";
 import { animate, utils } from "animejs";
@@ -123,11 +134,10 @@ export const NavigationRailFAB: Component<NavigationRailFABProps> = (props) => {
 	let el: HTMLDivElement | undefined;
 	let btn: HTMLButtonElement | undefined;
 	const [v, rest] = splitProps(props, ["class", "text"]);
-	const [initialized, setInitialized] = createSignal(false);
 	const expanded = useContext(NavigationRailContext) || (() => false);
 	const [labelWidth, setLabelWidth] = createSignal(0);
 	const style = tv({
-		base: "flex gap-2 top-5 left-5"
+		base: "flex gap-2 top-5 left-5 transition-none"
 	});
 
 	const textStyle = tv({
@@ -150,20 +160,26 @@ export const NavigationRailFAB: Component<NavigationRailFABProps> = (props) => {
 		btn.removeChild(testEl);
 	});
 
-	createEffect(() => {
+	createMemo(() => {
+		const width = labelWidth();
+		if (expanded()) {
+			btn && utils.set(btn!, {
+				width: 64 + width
+			});
+		}
 		if (!btn) return;
 		if (expanded()) {
 			animate(btn, {
-				width: 64 + labelWidth(),
-				duration: initialized() ? 100 : 0
+				width: 64 + width,
+				duration: 100
 			});
 		} else {
 			animate(btn, {
 				width: 56,
-				duration: initialized() ? 100 : 0
+				duration: 100
 			});
 		}
-		setInitialized(true);
+		return expanded();
 	});
 
 	return (
