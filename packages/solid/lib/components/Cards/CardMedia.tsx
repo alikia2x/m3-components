@@ -1,7 +1,7 @@
 import { Component, JSX, splitProps } from "solid-js";
 import { tv } from "tailwind-variants";
 
-export interface CardMediaProps extends JSX.HTMLAttributes<HTMLImageElement> {
+export interface CardMediaProps extends JSX.ImgHTMLAttributes<HTMLImageElement> {
 	alt?: string;
 	round: boolean;
 }
