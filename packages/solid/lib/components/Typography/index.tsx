@@ -1,10 +1,9 @@
-import { Component, JSX } from "solid-js";
 import { Headline } from "./Headline";
 import { Body } from "./Body";
 
 interface Typography {
-	Headline: Component<JSX.HTMLAttributes<HTMLDivElement>>;
-	Body: Component<JSX.HTMLAttributes<HTMLParagraphElement>>;
+	Headline: typeof Headline;
+	Body: typeof Body;
 }
 
 export const Typography: Typography = {} as Typography;
