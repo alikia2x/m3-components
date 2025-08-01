@@ -5,7 +5,7 @@ import { CardContent } from "./CardContent";
 import { CardActionArea } from "./CardActionArea";
 
 export interface CardProps extends JSX.HTMLAttributes<HTMLDivElement> {
-	variant: "outlined" | "filled" | "elevated";
+	variant?: "outlined" | "filled" | "elevated";
 	clickable?: boolean;
 }
 

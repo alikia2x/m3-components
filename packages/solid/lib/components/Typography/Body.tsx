@@ -1,8 +1,8 @@
 import { Component, JSX, splitProps } from "solid-js";
 import { tv } from "tailwind-variants";
 
-interface BodyProps extends JSX.HTMLAttributes<HTMLHeadingElement> {
-	variant?: "large" | "medium" | "small";
+interface BodyProps extends JSX.HTMLAttributes<HTMLParagraphElement> {
+	variant?: "large" | "medium" | "small";	
 }
 
 export const Body: Component<BodyProps> = (props) => {
@@ -14,6 +14,9 @@ export const Body: Component<BodyProps> = (props) => {
 				medium: "text-sm leading-5",
 				small: "text-xs leading-4"
 			}
+		},
+		defaultVariants: {
+			variant: "large"
 		}
 	});
 	const [v, rest] = splitProps(props, ["class", "variant"]);
