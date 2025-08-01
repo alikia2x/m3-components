@@ -3,12 +3,12 @@ import { tv } from "tailwind-variants";
 import { type TitleLevel, NativeHeading } from "./NativeHeading";
 
 interface DisplayProps extends JSX.HTMLAttributes<HTMLHeadingElement> {
-    level?: TitleLevel;
-    variant?: "large" | "medium" | "small";
+	level?: TitleLevel;
+	variant?: "large" | "medium" | "small";
 }
 
 export const Display: Component<DisplayProps> = (props) => {
-    const headlineStyle = tv({
+	const headlineStyle = tv({
 		base: "",
 		variants: {
 			variant: {
@@ -21,10 +21,10 @@ export const Display: Component<DisplayProps> = (props) => {
 			variant: "small"
 		}
 	});
-    const [v, rest] = splitProps(props, ["class", "variant", "level"]);
-    return (
-        <NativeHeading level={v.level || "h1"} class={headlineStyle({ class: v.class, variant: v.variant })} {...rest}>
-            {rest.children}
-        </NativeHeading>
-    );
+	const [v, rest] = splitProps(props, ["class", "variant", "level"]);
+	return (
+		<NativeHeading level={v.level || "h1"} class={headlineStyle({ class: v.class, variant: v.variant })} {...rest}>
+			{rest.children}
+		</NativeHeading>
+	);
 };

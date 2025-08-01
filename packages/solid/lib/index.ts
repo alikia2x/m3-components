@@ -16,4 +16,10 @@ export {
 } from "./components/AppBar/index";
 export { Card, type CardProps, CardContent, CardMedia, CardActionArea } from "./components/Cards/index";
 export { Typography } from "./components/Typography/index";
-export { NavigationRail, NavigationRailAction, NavigationRailMenu, NavigationRailActions, NavigationRailFAB } from "./components/NavigationRail/index";
+export {
+	NavigationRail,
+	NavigationRailAction,
+	NavigationRailMenu,
+	NavigationRailActions,
+	NavigationRailFAB
+} from "./components/NavigationRail/index";

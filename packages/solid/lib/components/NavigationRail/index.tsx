@@ -163,9 +163,10 @@ export const NavigationRailFAB: Component<NavigationRailFABProps> = (props) => {
 	createMemo(() => {
 		const width = labelWidth();
 		if (expanded()) {
-			btn && utils.set(btn!, {
-				width: 64 + width
-			});
+			btn &&
+				utils.set(btn!, {
+					width: 64 + width
+				});
 		}
 		if (!btn) return;
 		if (expanded()) {

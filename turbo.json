@@ -12,8 +12,11 @@
             "cache": false
         },
         "format": {
-            "persistent": true,
             "cache": false
+        },
+        "deploy-docs": {
+            "cache": false,
+            "dependsOn": ["docs#build"]
         }
     }
 }

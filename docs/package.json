@@ -7,7 +7,7 @@
 		"preview": "astro preview",
 		"astro": "astro",
 		"format": "prettier . --write --plugin=prettier-plugin-astro",
-		"deploy": "pnpm wrangler deploy"
+		"deploy-docs": "pnpm wrangler deploy"
 	},
 	"dependencies": {
 		"@astrojs/mdx": "^4.3.0",

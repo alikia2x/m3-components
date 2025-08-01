@@ -2,7 +2,7 @@ import { Component, JSX, splitProps } from "solid-js";
 import { tv } from "tailwind-variants";
 
 interface BodyProps extends JSX.HTMLAttributes<HTMLParagraphElement> {
-	variant?: "large" | "medium" | "small";	
+	variant?: "large" | "medium" | "small";
 }
 
 export const Body: Component<BodyProps> = (props) => {
