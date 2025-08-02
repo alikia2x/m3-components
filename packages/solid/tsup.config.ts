@@ -1,4 +1,3 @@
-import { solidPlugin } from "esbuild-plugin-solid";
 import { type Options, defineConfig } from "tsup";
 
 function generateConfig(jsx: boolean): Options {
@@ -17,13 +16,11 @@ function generateConfig(jsx: boolean): Options {
 				options.jsx = "preserve";
 			}
 			options.chunkNames = "[name]/[hash]";
-			//options.drop = ["console", "debugger"];
+			options.drop = ["console", "debugger"];
 		},
 		outExtension() {
 			return jsx ? { js: ".jsx" } : {};
 		}
-		// // @ts-ignore
-		// esbuildPlugins: !jsx ? [solidPlugin({ solid: { generate: "dom" } })] : []
 	};
 }
 

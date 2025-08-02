@@ -6,13 +6,13 @@
 		"dev": "turbo run dev",
 		"format": "turbo run format",
 		"pub": "dotenv -- pnpm publish -r --access public --no-git-checks",
-		"docs": "turbo run deploy-docs"
+		"fire": "turbo run deploy-docs"
 	},
 	"packageManager": "pnpm@10.14.0",
 	"devDependencies": {
 		"dotenv-cli": "^10.0.0",
 		"prettier": "^3.5.3",
-		"turbo": "^2.5.4",
+		"turbo": "^2.5.5",
 		"typescript": "^5.8.3"
 	}
 }

@@ -1,7 +1,7 @@
 import { Component, JSX } from "solid-js";
 import { TextButton } from "./Text";
 import { FilledButton } from "./Filled";
-import { tv, TVVariants } from "tailwind-variants";
+import { tv } from "tailwind-variants";
 
 export type ButtonShape = "round" | "square";
 export type ButtonSize = "extra-small" | "small" | "medium" | "large" | "extra-large";

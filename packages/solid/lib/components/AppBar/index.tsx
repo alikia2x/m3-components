@@ -1,9 +1,8 @@
-import { Component, createEffect, createSignal, JSX, splitProps } from "solid-js";
+import { Component, JSX, splitProps } from "solid-js";
 import { SearchAppBar } from "./Search";
-import { tv } from "tailwind-variants";
 import { ABProvider } from "./context";
 
-type DivProps = JSX.HTMLAttributes<HTMLDivElement>;
+export type DivProps = JSX.HTMLAttributes<HTMLDivElement>;
 
 export interface AppBarProps extends JSX.HTMLAttributes<HTMLElement> {
 	scrolling?: boolean;
@@ -11,42 +10,6 @@ export interface AppBarProps extends JSX.HTMLAttributes<HTMLElement> {
 	variant?: "search" | "small" | "medium-flexible" | "large-flexible";
 	alignment?: "leading-edge" | "center";
 }
-
-export const LeadingElement: Component<DivProps> = (props) => {
-	const [v, rest] = splitProps(props, ["class"]);
-	const style = tv({
-		base: "relative ml-1 mr-2 w-12 h-12 items-center justify-center flex"
-	});
-	return (
-		<div class={style({ class: v.class })} {...rest}>
-			{props.children}
-		</div>
-	);
-};
-
-export const TrailingElementGroup: Component<DivProps> = (props) => {
-	const [v, rest] = splitProps(props, ["class"]);
-	const style = tv({
-		base: "relative ml-2 mr-1 w-auto h-12 flex"
-	});
-	return (
-		<div class={style({ class: v.class })} {...rest}>
-			{rest.children}
-		</div>
-	);
-};
-
-export const TrailingElement: Component<DivProps> = (props) => {
-	const [v, rest] = splitProps(props, ["class"]);
-	const style = tv({
-		base: "relative rounded-full w-12 h-12"
-	});
-	return (
-		<div class={style({ class: v.class })} {...rest}>
-			{rest.children}
-		</div>
-	);
-};
 
 export const AppBar: Component<AppBarProps> = (props) => {
 	const scrolling = () => props.scrolling || false;
@@ -69,3 +32,5 @@ export const AppBarInner: Component<AppBarProps> = (props) => {
 };
 
 export { AppBarSearchBox } from "./Search";
+export * from "./leading";
+export * from "./trailing";

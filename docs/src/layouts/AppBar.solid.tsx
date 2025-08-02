@@ -2,9 +2,9 @@ import {
 	AppBar,
 	AppBarSearchBox,
 	IconButton,
-	LeadingElement,
-	TrailingElementGroup,
-	TrailingElement
+	AppBarLeadingElement,
+	AppBarTrailingElementGroup,
+	AppBarTrailingElement
 } from "@m3-components/solid";
 import { GitHub } from "@components/icons/GitHub.solid.js";
 import { type Component, createSignal, type JSX, onCleanup, onMount } from "solid-js";
@@ -33,7 +33,7 @@ export const TopAppBar: Component<JSX.HTMLAttributes<HTMLElement>> = () => {
 
 	return (
 		<AppBar variant="search" scrolling={scrolling()} class="fixed inset-x-0 top-0 z-20 px-2">
-			<LeadingElement>
+			<AppBarLeadingElement>
 				<a href="/docs">
 					<div class="rounded-full w-12 h-12 flex items-center justify-center bg-blue-200/50 dark:bg-blue-300">
 						<span class="text-xl font-medium translate-x-[1.5px] text-blue-900">
@@ -41,15 +41,15 @@ export const TopAppBar: Component<JSX.HTMLAttributes<HTMLElement>> = () => {
 						</span>
 					</div>
 				</a>
-			</LeadingElement>
+			</AppBarLeadingElement>
 			<AppBarSearchBox placeholder="Search" />
-			<TrailingElementGroup>
-				<TrailingElement>
+			<AppBarTrailingElementGroup>
+				<AppBarTrailingElement>
 					<IconButton class="font-2xl w-12 h-12 text-on-background">
 						<GitHub />
 					</IconButton>
-				</TrailingElement>
-			</TrailingElementGroup>
+				</AppBarTrailingElement>
+			</AppBarTrailingElementGroup>
 		</AppBar>
 	);
 };

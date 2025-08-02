@@ -4,9 +4,9 @@ import {
 	AppBar,
 	AppBarSearchBox,
 	IconButton,
-	LeadingElement,
-	TrailingElementGroup,
-	TrailingElement
+	AppBarLeadingElement,
+	AppBarTrailingElementGroup,
+	AppBarTrailingElement
 } from "@m3-components/solid";
 import { Phone, PhoneStatusBar } from "./Phone.tsx";
 
@@ -50,19 +50,19 @@ export const AppBarDemo: Component = () => {
 		<Phone ref={container}>
 			<PhoneStatusBar scrolling={scrolling()} />
 			<AppBar variant="search" scrolling={scrolling()} class="top-16">
-				<LeadingElement>
+				<AppBarLeadingElement>
 					<IconButton>
 						<MenuIcon />
 					</IconButton>
-				</LeadingElement>
+				</AppBarLeadingElement>
 				<AppBarSearchBox placeholder="Search" />
-				<TrailingElementGroup>
-					<TrailingElement>
+				<AppBarTrailingElementGroup>
+					<AppBarTrailingElement>
 						<IconButton>
 							<UserIcon />
 						</IconButton>
-					</TrailingElement>
-				</TrailingElementGroup>
+					</AppBarTrailingElement>
+				</AppBarTrailingElementGroup>
 			</AppBar>
 			<div class="p-6">
 				<h1 class="text-4xl font-light">Lorem ipsum</h1>

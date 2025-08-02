@@ -3,7 +3,7 @@ import { tv } from "tailwind-variants";
 
 export interface CardMediaProps extends JSX.ImgHTMLAttributes<HTMLImageElement> {
 	alt?: string;
-	round: boolean;
+	round?: boolean;
 }
 
 export const CardMedia: Component<CardMediaProps> = (props) => {
@@ -14,6 +14,9 @@ export const CardMedia: Component<CardMediaProps> = (props) => {
 			round: {
 				true: "rounded-b-2xl"
 			}
+		},
+		defaultVariants: {
+			round: false
 		}
 	});
 	return <img class={style({ class: v.class, round: v.round })} alt={v.alt} {...rest} />;

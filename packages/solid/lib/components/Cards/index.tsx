@@ -1,6 +1,6 @@
 import { JSX } from "solid-js";
 import { OutlinedCard } from "./Outlined";
-import { CardMedia } from "./CardMedia";
+import { CardMedia, type CardMediaProps } from "./CardMedia";
 import { CardContent } from "./CardContent";
 import { CardActionArea } from "./CardActionArea";
 
@@ -16,4 +16,4 @@ export function Card(props: CardProps) {
 	}
 }
 
-export { CardMedia, CardContent, CardActionArea };
+export { CardMedia, CardContent, CardActionArea, type CardMediaProps };

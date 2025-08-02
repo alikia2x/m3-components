@@ -9,17 +9,25 @@ export {
 export {
 	AppBar,
 	AppBarSearchBox,
-	LeadingElement,
-	TrailingElementGroup,
-	TrailingElement,
+	AppBarLeadingElement,
+	AppBarTrailingElementGroup,
+	AppBarTrailingElement,
 	type AppBarProps
 } from "./components/AppBar/index";
-export { Card, type CardProps, CardContent, CardMedia, CardActionArea } from "./components/Cards/index";
-export { Typography } from "./components/Typography/index";
+export {
+	Card,
+	CardContent,
+	CardMedia,
+	CardActionArea,
+	type CardProps,
+	type CardMediaProps
+} from "./components/Cards/index";
 export {
 	NavigationRail,
+	NavigationRailActions,
 	NavigationRailAction,
 	NavigationRailMenu,
-	NavigationRailActions,
-	NavigationRailFAB
+	NavigationRailFAB,
+	type NavigationRailProps
 } from "./components/NavigationRail/index";
+export { Typography } from "./components/Typography/index";
