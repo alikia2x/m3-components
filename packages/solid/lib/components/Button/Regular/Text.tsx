@@ -7,34 +7,35 @@ export const TextButton: Component<ButtonProps> = (props) => {
 	const [v, rest] = splitProps(props, ["class", "ripple", "size", "shape"]);
 
 	const stateLayerStyle = tv({
-		base: "absolute w-full h-full enabled:hover:bg-primary/10 enabled:dark:hover:bg-dark-primary/10 \
-                left-0 top-0",
+		base: "absolute w-full h-full left-0 top-0",
 		variants: {
 			disabled: {
-				true: "bg-on-surface/10 dark:bg-dark-on-surface/10"
+				true: "bg-on-surface/10",
+				false: "hover:bg-primary/8"
 			}
 		}
 	});
 
 	const style = tv({
 		extend: baseButton,
-		base: [
-			"text-primary dark:text-dark-primary ",
-			"disabled:text-on-surface/40 disabled:dark:text-dark-on-surface/40",
-			"relative flex items-center justify-center overflow-hidden",
-			"duration-150 select-none"
-		]
+		base: "relative flex items-center justify-center overflow-hidden duration-150 select-none",
+		variants: {
+			disabled: {
+				true: "text-on-surface/40",
+				false: "text-primary"
+			}
+		}
 	});
 
 	const { onMouseDown } = useRipple({ ripple: v.ripple ?? true });
 
 	return (
 		<button
-			class={style({ class: v.class, shape: v.shape, size: v.size })}
-			{...rest}
+			class={style({ class: v.class, shape: v.shape, size: v.size, disabled: rest.disabled || false })}
 			ref={rest.ref as unknown as (el: HTMLButtonElement) => void}
+			{...rest}
 		>
-			<div class={stateLayerStyle({ disabled: rest.disabled })} onMouseDown={onMouseDown}></div>
+			<div class={stateLayerStyle({ disabled: rest.disabled || false })} onMouseDown={onMouseDown}></div>
 			{rest.children}
 		</button>
 	);

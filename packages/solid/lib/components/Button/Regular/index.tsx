@@ -2,6 +2,7 @@ import { Component, JSX } from "solid-js";
 import { TextButton } from "./Text";
 import { FilledButton } from "./Filled";
 import { tv } from "tailwind-variants";
+import { OutlinedButton } from "./Outlined";
 
 export type ButtonShape = "round" | "square";
 export type ButtonSize = "extra-small" | "small" | "medium" | "large" | "extra-large";
@@ -14,7 +15,7 @@ export interface ButtonProps extends JSX.ButtonHTMLAttributes<HTMLButtonElement>
 }
 
 export interface ButtonRootProps extends ButtonProps {
-	variant?: "text" | "filled";
+	variant?: "text" | "filled" | "outlined";
 }
 
 export const getShapeClasses = (shape: ButtonShape, size: ButtonSize) => {
@@ -67,10 +68,12 @@ export const baseButton = tv({
 export const Button: Component<ButtonRootProps> = (props) => {
 	switch (props.variant) {
 		case "text":
-			return <TextButton {...props}>{props.children}</TextButton>;
+			return <TextButton {...props} />;
 		case "filled":
-			return <FilledButton {...props}>{props.children}</FilledButton>;
+			return <FilledButton {...props} />;
+		case "outlined":
+			return <OutlinedButton {...props} />;
 		default:
-			return <FilledButton {...props}>{props.children}</FilledButton>;
+			return <FilledButton {...props} />;
 	}
 };

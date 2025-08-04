@@ -23,7 +23,7 @@ export const FilledButton: Component<ButtonProps> = (props) => {
 			})}
 			{...rest}
 		>
-			<div class="absolute w-full h-full hover:bg-on-surface-variant/10" onMouseDown={onMouseDown}></div>
+			<div class="absolute w-full h-full hover:bg-on-primary/8" onMouseDown={onMouseDown}></div>
 			{rest.children}
 		</button>
 	);

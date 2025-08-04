@@ -1,16 +1,18 @@
-import { Component, createEffect, createSignal, JSX, splitProps, useContext } from "solid-js";
+import { Component, createEffect, createSignal, JSX, onCleanup, splitProps, useContext } from "solid-js";
 import { NavigationRailContext } from "./context";
 import { tv } from "tailwind-variants";
-import { animate } from "animejs";
+import { Dynamic } from "solid-js/web";
+import { animate, utils } from "animejs";
+import { makeEventListener } from "@solid-primitives/event-listener";
 
 export interface NRActionProps extends JSX.HTMLAttributes<HTMLDivElement> {
 	activated?: boolean;
 	label?: string;
-	icon?: JSX.Element;
+	icon?: Component;
 }
 
 export const NavigationRailAction: Component<NRActionProps> = (props) => {
-	let el: HTMLDivElement | undefined;
+	let activeIndicatorElement: HTMLDivElement | undefined;
 	let labelElement: HTMLSpanElement | undefined;
 	const [initialized, setInitialized] = createSignal(false);
 	const expanded = useContext(NavigationRailContext) || (() => false);
@@ -67,9 +69,9 @@ export const NavigationRailAction: Component<NRActionProps> = (props) => {
 	});
 
 	createEffect(() => {
-		if (!el || !v.activated) return;
+		if (!activeIndicatorElement || !v.activated) return;
 		if (expanded()) {
-			animate(el, {
+			animate(activeIndicatorElement, {
 				width: [
 					{ to: 56, duration: 0 },
 					{ to: 64 + labelWidth(), duration: initialized() ? 200 : 0, delay: 0 }
@@ -80,7 +82,7 @@ export const NavigationRailAction: Component<NRActionProps> = (props) => {
 				]
 			});
 		} else {
-			animate(el, {
+			animate(activeIndicatorElement, {
 				width: [
 					{ to: 0, duration: 0 },
 					{ to: 56, duration: initialized() ? 200 : 0, delay: 0 }
@@ -94,10 +96,33 @@ export const NavigationRailAction: Component<NRActionProps> = (props) => {
 		setInitialized(true);
 	});
 
+	let clear: () => void = () => {};
+	createEffect(() => {
+		clear = makeEventListener(
+			window,
+			"resize",
+			() => {
+				if (!activeIndicatorElement) return;
+				utils.set(activeIndicatorElement, {
+					width: expanded() ? 64 + labelWidth() : 56
+				});
+			},
+			{ passive: true }
+		);
+	});
+	onCleanup(() => {
+		clear();
+	});
+
 	return (
 		<div class={style({ class: v.class, expanded: expanded() })} {...rest}>
-			<div class={activeIndicatorStyle({ activated: v.activated, expanded: expanded() })} ref={el} />
-			<div class={iconStyle({ expanded: expanded() })}>{v.icon}</div>
+			<div
+				class={activeIndicatorStyle({ activated: v.activated, expanded: expanded() })}
+				ref={activeIndicatorElement}
+			/>
+			<div class={iconStyle({ expanded: expanded() })}>
+				<Dynamic component={v.icon} />
+			</div>
 			<div class={labelStyle({ expanded: expanded() })}>
 				<span class="text-sm leading-5 select-none" ref={labelElement}>
 					{v.label}

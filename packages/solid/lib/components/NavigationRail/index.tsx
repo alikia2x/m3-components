@@ -1,6 +1,7 @@
 // noinspection JSUnusedAssignment
 
-import { Component, createEffect, createSignal, JSX, splitProps } from "solid-js";
+import { Component, createEffect, createSignal, JSX, onCleanup, splitProps } from "solid-js";
+import { makeEventListener } from "@solid-primitives/event-listener";
 import { tv } from "tailwind-variants";
 import { NRProvider } from "./context";
 import { animate, utils } from "animejs";
@@ -52,6 +53,24 @@ export const NavigationRailInner: Component<NavigationRailProps> = (props) => {
 				width: v.expanded ? clip(v.width || defaultWidth, 220, 360) : 96
 			});
 		}
+	});
+
+	let clear: () => void = () => {};
+	createEffect(() => {
+		clear = makeEventListener(
+			window,
+			"resize",
+			() => {
+				if (!el) return;
+				utils.set(el, {
+					width: v.expanded ? clip(v.width || defaultWidth, 220, 360) : 96
+				});
+			},
+			{ passive: true }
+		);
+	});
+	onCleanup(() => {
+		clear();
 	});
 
 	const style = tv({

@@ -1,9 +1,10 @@
-import { Component, createEffect, createMemo, createSignal, JSX, splitProps, useContext } from "solid-js";
+import { Component, createEffect, createMemo, createSignal, JSX, onCleanup, splitProps, useContext } from "solid-js";
 import { NavigationRailContext } from "./context";
 import { tv } from "tailwind-variants";
 import { animate, utils } from "animejs";
 import { FloatingActionButton, FloatingActionButtonProps } from "../Button";
 import { MenuButton } from "../Button/MenuButton";
+import { makeEventListener } from "@solid-primitives/event-listener";
 
 interface NavigationRailFABProps extends Omit<FloatingActionButtonProps, "position"> {
 	text?: string;
@@ -15,6 +16,7 @@ export const NavigationRailFAB: Component<NavigationRailFABProps> = (props) => {
 	const [v, rest] = splitProps(props, ["class", "text"]);
 	const expanded = useContext(NavigationRailContext) || (() => false);
 	const [labelWidth, setLabelWidth] = createSignal(0);
+
 	const style = tv({
 		base: "flex gap-2 top-5 left-5 transition-none"
 	});
@@ -32,7 +34,12 @@ export const NavigationRailFAB: Component<NavigationRailFABProps> = (props) => {
 	createEffect(() => {
 		if (!el || !btn) return;
 		const testEl = document.createElement("div");
-		testEl.classList.add("text-base", "font-medium", "leading-6", "duration-100", "fixed");
+		testEl.classList.add(
+			"text-base",
+			"font-medium",
+			"leading-6",
+			"whitespace-nowrap"
+		);
 		testEl.textContent = v.text || "";
 		btn.appendChild(testEl);
 		setLabelWidth(testEl.getBoundingClientRect().width || 0);
@@ -60,6 +67,24 @@ export const NavigationRailFAB: Component<NavigationRailFABProps> = (props) => {
 			});
 		}
 		return expanded();
+	});
+
+	let clear: () => void = () => {};
+	createEffect(() => {
+		clear = makeEventListener(
+			window,
+			"resize",
+			() => {
+				btn &&
+					utils.set(btn!, {
+						width: expanded() ? 64 + labelWidth() : 56
+					});
+			},
+			{ passive: true }
+		);
+	});
+	onCleanup(() => {
+		clear();
 	});
 
 	return (
