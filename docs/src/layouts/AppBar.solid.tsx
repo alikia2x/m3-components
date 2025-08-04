@@ -45,9 +45,11 @@ export const TopAppBar: Component<JSX.HTMLAttributes<HTMLElement>> = () => {
 			<AppBarSearchBox placeholder="Search" />
 			<AppBarTrailingElementGroup>
 				<AppBarTrailingElement>
-					<IconButton class="font-2xl w-12 h-12 text-on-background">
-						<GitHub />
-					</IconButton>
+					<a href="https://github.com/alikia2x/m3-components">
+						<IconButton class="font-2xl w-12 h-12 text-on-background">
+							<GitHub />
+						</IconButton>
+					</a>
 				</AppBarTrailingElement>
 			</AppBarTrailingElementGroup>
 		</AppBar>
