@@ -26,7 +26,7 @@ export const AppBarSearchBox: Component<AppBarSearchBoxProps> = (props) => {
 export const AppBarSearchContainer: Component<JSX.HTMLAttributes<HTMLDivElement>> = (props) => {
 	const [v, rest] = splitProps(props, ["class"]);
 	const style = tv({
-		base: "w-[max(calc(50%-104px),min(100%,312px))]"
+		base: "w-[max(calc(50%-104px),min(calc(100%-104px),312px))]"
 	});``
 	return (
 		<div class={style({ class: v.class })} {...rest}>
