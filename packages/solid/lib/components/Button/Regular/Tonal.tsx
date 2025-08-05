@@ -10,7 +10,7 @@ export const TonalButton: Component<ButtonProps> = (props) => {
 
     const style = tv({
         extend: baseButton,
-        base: "border-1 bg-secondary-container text-secondary duration-150 select-none \
+        base: "bg-secondary-container text-secondary duration-150 select-none \
                 flex items-center justify-center relative overflow-hidden"
     });
 
