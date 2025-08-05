@@ -1,12 +1,13 @@
 import { createEffect, createSignal, type Component } from "solid-js";
 import { createScrollPosition } from "@solid-primitives/scroll";
 import {
+	IconButton,
 	AppBar,
 	AppBarSearchBox,
-	IconButton,
+	AppBarSearchContainer,
 	AppBarLeadingElement,
-	AppBarTrailingElementGroup,
-	AppBarTrailingElement
+	AppBarTrailingElement,
+	AppBarTrailingElementGroup
 } from "@m3-components/solid";
 import { Phone, PhoneStatusBar } from "./Phone.tsx";
 
@@ -55,7 +56,9 @@ export const AppBarDemo: Component = () => {
 						<MenuIcon />
 					</IconButton>
 				</AppBarLeadingElement>
-				<AppBarSearchBox placeholder="Search" />
+				<AppBarSearchContainer>
+					<AppBarSearchBox placeholder="Search" />
+				</AppBarSearchContainer>
 				<AppBarTrailingElementGroup>
 					<AppBarTrailingElement>
 						<IconButton>

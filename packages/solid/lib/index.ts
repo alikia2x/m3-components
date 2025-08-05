@@ -9,6 +9,7 @@ export {
 export {
 	AppBar,
 	AppBarSearchBox,
+	AppBarSearchContainer,
 	AppBarLeadingElement,
 	AppBarTrailingElementGroup,
 	AppBarTrailingElement,

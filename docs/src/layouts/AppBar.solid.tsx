@@ -4,7 +4,8 @@ import {
 	IconButton,
 	AppBarLeadingElement,
 	AppBarTrailingElementGroup,
-	AppBarTrailingElement
+	AppBarTrailingElement,
+	AppBarSearchContainer
 } from "@m3-components/solid";
 import { GitHub } from "@components/icons/GitHub.solid.js";
 import { type Component, createSignal, type JSX, onCleanup, onMount } from "solid-js";
@@ -42,7 +43,9 @@ export const TopAppBar: Component<JSX.HTMLAttributes<HTMLElement>> = () => {
 					</div>
 				</a>
 			</AppBarLeadingElement>
-			<AppBarSearchBox placeholder="Search" />
+			<AppBarSearchContainer>
+				<AppBarSearchBox placeholder="Search" />
+			</AppBarSearchContainer>
 			<AppBarTrailingElementGroup>
 				<AppBarTrailingElement>
 					<a href="https://github.com/alikia2x/m3-components">

@@ -5,7 +5,7 @@ import { DivProps } from "./index";
 export const AppBarTrailingElement: Component<DivProps> = (props) => {
 	const [v, rest] = splitProps(props, ["class"]);
 	const style = tv({
-		base: "relative rounded-full w-12 h-12"
+		base: "relative w-12 h-12 items-center justify-center flex"
 	});
 	return (
 		<div class={style({ class: v.class })} {...rest}>
@@ -17,7 +17,7 @@ export const AppBarTrailingElement: Component<DivProps> = (props) => {
 export const AppBarTrailingElementGroup: Component<DivProps> = (props) => {
 	const [v, rest] = splitProps(props, ["class"]);
 	const style = tv({
-		base: "relative ml-2 mr-1 w-auto h-12 flex"
+		base: "relative ml-2 mr-1 w-auto h-12 flex justify-end grow"
 	});
 	return (
 		<div class={style({ class: v.class })} {...rest}>

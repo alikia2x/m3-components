@@ -31,6 +31,6 @@ export const AppBarInner: Component<AppBarProps> = (props) => {
 	}
 };
 
-export { AppBarSearchBox } from "./Search";
+export { AppBarSearchBox, AppBarSearchContainer } from "./Search";
 export * from "./leading";
 export * from "./trailing";
