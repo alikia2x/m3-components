@@ -3,6 +3,7 @@ import { TextButton } from "./Text";
 import { FilledButton } from "./Filled";
 import { tv } from "tailwind-variants";
 import { OutlinedButton } from "./Outlined";
+import { TonalButton } from "./Tonal";
 
 export type ButtonShape = "round" | "square";
 export type ButtonSize = "extra-small" | "small" | "medium" | "large" | "extra-large";
@@ -15,7 +16,7 @@ export interface ButtonProps extends JSX.ButtonHTMLAttributes<HTMLButtonElement>
 }
 
 export interface ButtonRootProps extends ButtonProps {
-	variant?: "text" | "filled" | "outlined";
+	variant?: "text" | "filled" | "outlined" | "tonal";
 }
 
 export const getShapeClasses = (shape: ButtonShape, size: ButtonSize) => {
@@ -73,6 +74,8 @@ export const Button: Component<ButtonRootProps> = (props) => {
 			return <FilledButton {...props} />;
 		case "outlined":
 			return <OutlinedButton {...props} />;
+		case "tonal":
+			return <TonalButton {...props} />;
 		default:
 			return <FilledButton {...props} />;
 	}
