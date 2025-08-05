@@ -17,7 +17,7 @@ export const AppBarTrailingElement: Component<DivProps> = (props) => {
 export const AppBarTrailingElementGroup: Component<DivProps> = (props) => {
 	const [v, rest] = splitProps(props, ["class"]);
 	const style = tv({
-		base: "relative ml-2 mr-1 w-auto h-12 flex justify-end grow"
+		base: "relative ml-2 mr-1 w-auto h-12 flex justify-end grow shrink basis-0"
 	});
 	return (
 		<div class={style({ class: v.class })} {...rest}>
