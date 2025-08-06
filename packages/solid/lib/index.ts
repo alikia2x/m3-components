@@ -2,6 +2,7 @@ export {
 	Button,
 	IconButton,
 	FloatingActionButton,
+	ExtendedFAB,
 	type ButtonProps,
 	type FloatingActionButtonProps,
 	type IconButtonProps

@@ -10,27 +10,34 @@ export interface FloatingActionButtonProps extends JSX.ButtonHTMLAttributes<HTML
 	position?: "left" | "right" | "unset";
 }
 
+export const FABbaseStyle = tv({
+	base: "relative overflow-clip duration-150 select-none",
+	variants: {
+		color: {
+			primary: "bg-primary text-on-primary",
+			secondary: "bg-secondary text-on-secondary",
+			tertiary: "bg-tertiary text-on-tertiary",
+			"primary-container": "bg-primary-container text-on-primary-container",
+			"secondary-container": "bg-secondary-container text-on-secondary-container",
+			"tertiary-container": "bg-tertiary-container text-on-tertiary-container"
+		},
+		position: {
+			right: "fixed bottom-4 right-4",
+			left: "fixed bottom-4 left-4",
+			unset: ""
+		},
+		elevation: {
+			true: "shadow-[0px_4px_8px_1px] shadow-shadow/30"
+		}
+	}
+});
+
 export const FloatingActionButton: Component<FloatingActionButtonProps> = (props) => {
 	const [v, rest] = splitProps(props, ["class", "size", "color", "elevation", "position"]);
 	const style = tv({
+		extend: FABbaseStyle,
 		base: "relative overflow-clip duration-150 select-none",
 		variants: {
-			position: {
-				right: "fixed bottom-4 right-4",
-				left: "fixed bottom-4 left-4",
-				unset: ""
-			},
-			color: {
-				primary: "bg-primary text-on-primary",
-				secondary: "bg-secondary text-on-secondary",
-				tertiary: "bg-tertiary text-on-tertiary",
-				"primary-container": "bg-primary-container text-on-primary-container",
-				"secondary-container": "bg-secondary-container text-on-secondary-container",
-				"tertiary-container": "bg-tertiary-container text-on-tertiary-container"
-			},
-			elevation: {
-				true: "shadow-md"
-			},
 			size: {
 				baseline: "w-14 h-14 p-4 rounded-2xl",
 				medium: "w-20 h-20 p-5 rounded-[1.25rem]",

@@ -1,0 +1,82 @@
+---
+title: Extended FAB
+description: Extended floating action buttons (extended FABs) help people take primary actions
+---
+
+import { ExtendedFAB } from "@m3-components/solid";
+import ComponentPreview from "@components/ComponentPreview.astro";
+import { AddIcon } from "@components/icons/Add.solid";
+
+Use an extended FAB on screens with long, scrolling views that require persistent access to an action, such as a checkout screen. 
+
+Use it when label text helps understand the main action, or to add further emphasis to the button.
+
+## Import
+
+```jsx
+import { ExtendedFAB } from "@m3-components/solid";
+```
+
+## Basic Style
+
+<ComponentPreview>
+	<ExtendedFAB text="Add" position="unset" client:load>
+		<AddIcon />
+	</ExtendedFAB>
+</ComponentPreview>
+
+```jsx
+import { AddIcon } from "your-components";
+
+<ExtendedFAB text="Add" position="unset">
+	<AddIcon />
+</ExtendedFAB>
+```
+
+## Size
+
+There are three types of extended FABs: small, medium, and large.
+
+<ComponentPreview className="flex gap-4 items-center">
+	<ExtendedFAB text="Add" size="small" position="unset" client:load>
+		<AddIcon />
+	</ExtendedFAB>
+    <ExtendedFAB text="Add" size="medium" position="unset" client:load>
+		<AddIcon />
+	</ExtendedFAB>
+    <ExtendedFAB text="Add" size="large" position="unset" client:load>
+		<AddIcon />
+	</ExtendedFAB>
+</ComponentPreview>
+
+```jsx
+import { AddIcon } from "your-components";
+
+<ExtendedFAB text="Add" size="small" position="unset" client:load>
+    <AddIcon />
+</ExtendedFAB>
+<ExtendedFAB text="Add" size="medium" position="unset" client:load>
+    <AddIcon />
+</ExtendedFAB>
+<ExtendedFAB text="Add" size="large" position="unset" client:load>
+    <AddIcon />
+</ExtendedFAB>
+```
+
+## Positioning
+
+By default, the extended FAB button will be fixed to the bottom-right corner of the screen with a margin of 16px.
+
+<ComponentPreview className="translate-y-0.5 relative !h-40">
+	<ExtendedFAB  text="Add" client:load>
+		<AddIcon />
+	</ExtendedFAB>
+</ComponentPreview>
+
+```jsx
+import { AddIcon } from "your-components";
+
+<ExtendedFAB text="Add">
+	<AddIcon />
+</ExtendedFAB>
+```
