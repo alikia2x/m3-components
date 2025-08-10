@@ -6,7 +6,7 @@ export const OutlinedCard: Component<CardProps> = (props) => {
 	const [v, rest] = splitProps(props, ["class", "variant"]);
 
 	const styles = tv({
-		base: "relative bg-surface outline-1 outline-outline-variant rounded-xl overflow-clip"
+		base: "relative bg-surface border-1 border-outline-variant rounded-xl overflow-clip"
 	});
 
 	return (
