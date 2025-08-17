@@ -32,10 +32,10 @@
 		"tailwind-variants": "^1.0.0"
 	},
 	"devDependencies": {
-		"prettier": "^3.5.3",
 		"@tailwindcss/cli": "^4.1.11",
 		"esbuild-plugin-solid": "^0.6.0",
-		"tailwindcss": "^4.1.11",
+		"prettier": "^3.5.3",
+		"tailwindcss": "^3.4.17",
 		"tsup": "^8.3.6",
 		"typescript": "~5.8.3"
 	}
