@@ -34,12 +34,7 @@ export const NavigationRailFAB: Component<NavigationRailFABProps> = (props) => {
 	createEffect(() => {
 		if (!el || !btn) return;
 		const testEl = document.createElement("div");
-		testEl.classList.add(
-			"text-base",
-			"font-medium",
-			"leading-6",
-			"whitespace-nowrap"
-		);
+		testEl.classList.add("text-base", "font-medium", "leading-6", "whitespace-nowrap");
 		testEl.textContent = v.text || "";
 		btn.appendChild(testEl);
 		setLabelWidth(testEl.getBoundingClientRect().width || 0);

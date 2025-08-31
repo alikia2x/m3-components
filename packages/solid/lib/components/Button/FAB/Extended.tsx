@@ -3,9 +3,9 @@ import { useRipple } from "@utils/useRipple";
 import { tv } from "tailwind-variants";
 import { FABbaseStyle, FloatingActionButtonProps } from "./FAB";
 
-export interface ExtendedFABProps extends Omit<FloatingActionButtonProps, 'size'> {
+export interface ExtendedFABProps extends Omit<FloatingActionButtonProps, "size"> {
 	text?: string;
-    size?: "small" | "medium" | "large";
+	size?: "small" | "medium" | "large";
 }
 
 export const ExtendedFAB: Component<ExtendedFABProps> = (props) => {
