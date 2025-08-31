@@ -2,8 +2,10 @@
 export default {
 	content: ["./lib/**/*.tsx"],
 	theme: {
-		borderWidth: {
-			1: "0.0625rem"
+		extend: {
+			borderWidth: {
+				1: "0.0625rem"
+			}
 		},
 		colors: {
 			background: "var(--md-sys-color-background)",
