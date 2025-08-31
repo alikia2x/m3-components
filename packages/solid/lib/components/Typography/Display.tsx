@@ -14,7 +14,7 @@ export const Display: Component<DisplayProps> = (props) => {
 			variant: {
 				large: "text-[3.5625rem] leading-16 tracking-[0.015625rem]",
 				medium: "text-[2.8125rem] leading-[3.25rem]",
-				small: "text-4xl leading-11"
+				small: "text-4xl leading-[2.75rem]"
 			}
 		},
 		defaultVariants: {
